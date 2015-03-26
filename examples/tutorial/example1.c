@@ -35,6 +35,7 @@ int main ( int argc , char *argv[] )
 
 
     fprintf( stderr, "\n[i] libntoh version: %s\n", ntoh_version() );
+    fprintf( stderr, "\n[i] libpcap version: %s\n", pcap_lib_version());
 
     if ( argc < 3 )
     {
