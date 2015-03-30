@@ -7,6 +7,11 @@
 
 #define SIZE_ETHERNET 14
 
+typedef struct{
+    unsigned long client;
+    unsigned long server;
+} byte_count_t,*pbyte_count_t;
+
 pcap_t *handle;
 
 void shandler(int s){
@@ -19,21 +24,38 @@ void shandler(int s){
 }
 
 void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, int reason, int extra){
+    pbyte_count_t btcount = (pbyte_count_t)(stream->udata);
+    fprintf(stderr, "\n [%s] %s:%d (%s) -->",ntoh_tcp_get_status(stream->status),inet_ntoa(*(struct in_addr*)&orig->addr),ntohs(orig->port),ntoh_tcp_get_status(orig->status));
+    fprintf(stderr, "%s:%d (%s)\n\t", inet_ntoa(*(struct in_addr*)&dest->addr),ntohs(dest->port),ntoh_tcp_get_status(dest->status));
     switch(reason){
         /* connection sinchronization */
         case NTOH_REASON_SYNC:
             switch(extra){
+                case NTOH_REASON_MAX_SYN_RETRIES_REACHED:
+                case NTOH_REASON_MAX_SYNACK_RETRIES_REACHED:
+                case NTOH_REASON_HSFAILED:
+                case NTOH_REASON_EXIT:
                 case NTOH_REASON_TIMEDOUT:
-                case NTOH_REASON_ESTABLISHED:
-                    // fprintf(stderr, "\n[i] %s/%s - %s | %s:%d -->",ntoh_get_reason(reason),ntoh_get_reason(extra),ntoh_tcp_get_status(stream->status),inet_ntoa(*(struct in_addr*)&orig->addr),ntohs(orig->port));
-                    // fprintf(stderr, "%s:%d", inet_ntoa(*(struct in_addr*)&dest->addr),ntohs(dest->port));
-                    fprintf(stderr, "\n [%s] %s:%d (%s) -->",ntoh_tcp_get_status(stream->status),inet_ntoa(*(struct in_addr*)&orig->addr),ntohs(orig->port),ntoh_tcp_get_status(orig->status));
-                    fprintf(stderr, "%s:%d (%s)\n\t", inet_ntoa(*(struct in_addr*)&dest->addr),ntohs(dest->port),ntoh_tcp_get_status(dest->status));
-                    break;
                 case NTOH_REASON_CLOSED:
-                    fprintf(stderr, "\n[i] %s/%s - %s | Connection closed by %s (%s)",ntoh_get_reason(reason),ntoh_get_reason(extra),ntoh_tcp_get_status(stream->status),stream->closedby==NTOH_CLOSEDBY_CLIENT?"Client":"Server",inet_ntoa(*(struct in_addr*)&(stream->client.addr)));
+                    if(extra==NTOH_REASON_CLOSED){
+                        fprintf(stderr, "\n[i] %s/%s - %s | Connection closed by %s (%s)",ntoh_get_reason(reason),ntoh_get_reason(extra),ntoh_tcp_get_status(stream->status),stream->closedby==NTOH_CLOSEDBY_CLIENT?"Client":"Server",inet_ntoa(*(struct in_addr*)&(stream->client.addr)));
+                    }else {
+                        fprintf(stderr, "\n\t + %s/%s - %s",ntoh_get_reason(reason),ntoh_get_reason(extra),ntoh_tcp_get_status(stream->status));
+                    }
+                    fprintf(stderr, "\n\t[i] Total transfered data:");
+                    fprintf(stderr, "\n\t- Client: %lu bytes",btcount->client);
+                    fprintf(stderr, "\n\t- Server: %lu bytes",btcount->server);
+                    free(btcount);
                     break;
-            }  
+            }
+            break;
+        case NTOH_REASON_DATA:
+            fprintf(stderr, "\n\t+ Segment payload len: %i",seg->payload_len);
+            if(orig==&(stream->client))
+                btcount-> client+=seg->payload_len;
+            else
+                btcount->server+=seg->payload_len;
+            break;  
     }
 }
 
@@ -57,6 +79,7 @@ int main ( int argc , char *argv[] )
     pntoh_tcp_stream_t tcpstream = 0;
     unsigned int error=0;
     int ret=0;
+    pbyte_count_t btcount=0;
 
     /** TCP and IP headers dissection */
     struct ip *iphdr = 0;
@@ -173,6 +196,7 @@ int main ( int argc , char *argv[] )
 
         /* look for this TCP stream */
         if(!(tcpstream=ntoh_tcp_find_stream(tcpsession,&tcpt5))){
+            btcount=(pbyte_count_t) calloc(1,sizeof(byte_count_t));
             if(!(tcpstream=ntoh_tcp_new_stream(tcpsession,&tcpt5,&tcp_callback,0,&error,1,1)))
                 fprintf(stderr, "\n[e] Error %d creating new stream: %s",error,ntoh_get_errdesc(error));
             else{
