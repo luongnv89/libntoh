@@ -19,7 +19,22 @@ void shandler(int s){
 }
 
 void tcp_callback(pntoh_tcp_stream_t stream, pntoh_tcp_peer_t orig, pntoh_tcp_peer_t dest, pntoh_tcp_segment_t seg, int reason, int extra){
-    fprintf(stderr, "\n something happening header");
+    switch(reason){
+        /* connection sinchronization */
+        case NTOH_REASON_SYNC:
+            switch(extra){
+                case NTOH_REASON_TIMEDOUT:
+                case NTOH_REASON_ESTABLISHED:
+                    // fprintf(stderr, "\n[i] %s/%s - %s | %s:%d -->",ntoh_get_reason(reason),ntoh_get_reason(extra),ntoh_tcp_get_status(stream->status),inet_ntoa(*(struct in_addr*)&orig->addr),ntohs(orig->port));
+                    // fprintf(stderr, "%s:%d", inet_ntoa(*(struct in_addr*)&dest->addr),ntohs(dest->port));
+                    fprintf(stderr, "\n [%s] %s:%d (%s) -->",ntoh_tcp_get_status(stream->status),inet_ntoa(*(struct in_addr*)&orig->addr),ntohs(orig->port),ntoh_tcp_get_status(orig->status));
+                    fprintf(stderr, "%s:%d (%s)\n\t", inet_ntoa(*(struct in_addr*)&dest->addr),ntohs(dest->port),ntoh_tcp_get_status(dest->status));
+                    break;
+                case NTOH_REASON_CLOSED:
+                    fprintf(stderr, "\n[i] %s/%s - %s | Connection closed by %s (%s)",ntoh_get_reason(reason),ntoh_get_reason(extra),ntoh_tcp_get_status(stream->status),stream->closedby==NTOH_CLOSEDBY_CLIENT?"Client":"Server",inet_ntoa(*(struct in_addr*)&(stream->client.addr)));
+                    break;
+            }  
+    }
 }
 
 int main ( int argc , char *argv[] )
@@ -139,7 +154,7 @@ int main ( int argc , char *argv[] )
     /* capture starts */
     while ( ( packet = pcap_next( handle, &header ) ) != 0 )
     {
-        fprintf ( stderr , "\nGot a packet!");
+        // fprintf ( stderr , "\nGot a packet!");
         /** Chec ip header */
         iphdr = (struct ip*)(packet+SIZE_ETHERNET);
         size_ip=iphdr->ip_hl*4;
