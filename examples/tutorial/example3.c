@@ -35,18 +35,28 @@ void print_ip_header(struct ip *iph){
 }
 
 
+char * print_tcp_flag(int flg){
+    if(flg&TH_FIN) return "FIN";
+    if(flg&TH_SYN) return "SYN";
+    if(flg&TH_RST) return "RST";
+    if(flg&TH_PUSH) return "PUSH";
+    if(flg&TH_ACK) return "ACK";
+    if(flg&TH_URG) return "URG";
+    return "UNKNOWN";
+}
+
 void print_tcp_header(struct tcphdr *tcph){
     printf("\n\t-------------------TCP header----------------------");
     printf("\n\t %d | %d ",ntohs(tcph->th_sport),ntohs(tcph->th_dport));
     printf("\n\t %d",tcph->th_seq);
     printf("\n\t %d",tcph->th_ack);
-    printf("\n\t %d | %c | %d",tcph->th_off,tcph->th_flags,tcph->th_win);
+    printf("\n\t %d | %s | %d",tcph->th_off,print_tcp_flag(tcph->th_flags),tcph->th_win);
     printf("\n\t %d | %d",tcph->th_sum,tcph->th_urp);
 }
 
 void print_tcp_segment(pntoh_tcp_segment_t seg){
     printf("\n\t ----------------------------");
-    printf("\n\t | %lu | %lu | %c | %d | %d |",seg->seq,seg->ack,seg->flags,seg->payload_len,seg->origin);
+    printf("\n\t | %lu | %lu | %s | %d | %d |",seg->seq,seg->ack,print_tcp_flag(seg->flags),seg->payload_len,seg->origin);
     printf("\n\t ----------------------------");
 } 
 
