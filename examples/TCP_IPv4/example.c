@@ -59,19 +59,104 @@
 
 typedef struct
 {
-	unsigned char *data;
-	size_t data_len;
+	// unsigned char *data;
+	size_t total_len;
 	char *path;
+	struct ip *iphdr;
 } peer_info_t , *ppeer_info_t;
 
 #define RECV_CLIENT	1
 #define RECV_SERVER	2
+
+void print_ip_header(struct ip *iph){
+    printf("\n\t-------------------IP header----------------------");
+    printf("\n\t %d | %d | %d | %d",iph->ip_v,iph->ip_hl,iph->ip_tos,iph->ip_len);
+    printf("\n\t %d | flag | %d",iph->ip_id,iph->ip_off);
+    printf("\n\t %d | %d | %d",iph->ip_ttl,iph->ip_p,iph->ip_sum);
+    printf("\n\t %s ",inet_ntoa(iph->ip_src));
+    printf("\n\t %s ",inet_ntoa(iph->ip_dst));   
+}
+
+
+char * print_tcp_flag(int flg){
+    if(flg&TH_FIN) return "FIN";
+    if(flg&TH_SYN) return "SYN";
+    if(flg&TH_RST) return "RST";
+    if(flg&TH_PUSH) return "PUSH";
+    if(flg&TH_ACK) return "ACK";
+    if(flg&TH_URG) return "URG";
+    // if(flg&TH_NS) return "NS";
+    // if(flg&TH_CWR) return "CWR";
+    // if(flg&TH_ECE) return "ECE";
+    return "UNKNOWN";
+}
+
+void print_tcp_header(struct tcphdr *tcph){
+    printf("\n\t-------------------TCP header----------------------");
+    printf("\n\t %d | %d ",ntohs(tcph->th_sport),ntohs(tcph->th_dport));
+    printf("\n\t %d",ntohl(tcph->th_seq));
+    printf("\n\t %d",ntohl(tcph->th_ack));
+    printf("\n\t %d | %s | %d",tcph->th_off,print_tcp_flag(tcph->th_flags),tcph->th_win);
+    printf("\n\t %d | %d",tcph->th_sum,tcph->th_urp);
+}
+
+void print_tcp_segment(pntoh_tcp_segment_t seg){
+    printf("\n\t ----------------------------");
+    printf("\n\t | %lu | %lu | %s | %d | %d |",seg->seq,seg->ack,print_tcp_flag(seg->flags),seg->payload_len,seg->origin);
+    printf("\n\t ----------------------------");
+} 
+
+void  print_int_to_ip_addr(int num){
+    unsigned char bytes[4];
+    bytes[0] = num & 0xFF;
+    bytes[1] = (num>>8) & 0xFF;
+    bytes[2] = (num>>16) & 0xFF;
+    bytes[3] = (num>>24) & 0xFF;
+    printf(" %d.%d.%d.%d",bytes[0],bytes[1],bytes[2],bytes[3]);
+}
+
+void print_tcp_tuple5(ntoh_tcp_tuple5_t tcpt5){
+    printf("\n\t %s:%d <->",inet_ntoa(*(struct in_addr*)&tcpt5.source),ntohs(tcpt5.sport));
+    printf(" %s:%d |",inet_ntoa(*(struct in_addr*)&tcpt5.destination),ntohs(tcpt5.dport));
+    printf(" %d",tcpt5.protocol);
+}
+
+void print_tcp_peer(ntoh_tcp_peer_t peer){
+    printf("\n\t %s:%d ",inet_ntoa(*(struct in_addr*)&peer.addr),ntohs(peer.port));
+    printf("\n\t %lu | %lu",peer.isn, peer.ian);
+    printf("\n\t %lu | %lu",peer.next_seq,peer.final_seq);
+    printf("\n\t %d",peer.wsize);
+    printf("\n\t %s",ntoh_tcp_get_status(peer.status));
+    printf("\n\t %d | %d | %d | %lu | %d | %d\n",peer.mss, peer.sack, peer.wscale,peer.totalwin,peer.lastts,peer.receive);
+    if(peer.segments){
+        pntoh_tcp_segment_t seg=peer.segments; 
+        printf("\n\t*** Segment *** ");
+        print_tcp_segment(seg);
+        while(seg->next){
+        	// printf("\n\t FOUND SOME \n");
+            seg=seg->next;
+            print_tcp_segment(seg);
+        }
+    }
+    
+}
+void print_tcp_stream(pntoh_tcp_stream_t ptcpstream){
+    printf("\n\t-------------------TCP stream----------------------");
+    print_tcp_tuple5(ptcpstream->tuple);
+    printf("\n\t %s",ntoh_tcp_get_status(ptcpstream->status));
+    printf("\n\t client");
+    print_tcp_peer(ptcpstream->client);
+    printf("\n\t Server");
+    print_tcp_peer(ptcpstream->server);
+    printf("\n\t--------------------End of stream------------------");
+}
 
 /* capture handle */
 pcap_t 					*handle = 0;
 pntoh_tcp_session_t		tcp_session = 0;
 pntoh_ipv4_session_t	ipv4_session = 0;
 unsigned short			receive = 0;
+unsigned short nbSegments = 0;
 
 /**
  * @brief Exit function (closes the capture handle and releases all resource from libntoh)
@@ -92,7 +177,28 @@ void shandler ( int sign )
 /**
  * @brief Returns a struct which stores some peer information
  */
-ppeer_info_t get_peer_info ( unsigned char *payload , size_t payload_len , pntoh_tcp_tuple5_t tuple )
+// ppeer_info_t get_peer_info ( unsigned char *payload , size_t payload_len , pntoh_tcp_tuple5_t tuple )
+// {
+// 	ppeer_info_t ret = 0;
+// 	size_t len = 0;
+// 	char path[1024] = {0};
+
+// 	/* gets peer information */
+// 	ret = (ppeer_info_t) calloc ( 1 , sizeof ( peer_info_t ) );
+// 	ret->data_len = payload_len;
+// 	ret->data = (unsigned char*) calloc ( ret->data_len , sizeof ( unsigned char ) );
+// 	memcpy ( ret->data , payload , ret->data_len );
+
+// 	snprintf ( path , sizeof(path) , "%s:%d-" , inet_ntoa ( *(struct in_addr*)&(tuple->source) ) , ntohs(tuple->sport) );
+// 	len = strlen(path);
+// 	snprintf ( &path[len] , sizeof(path) - len, "%s:%d" , inet_ntoa ( *(struct in_addr*)&(tuple->destination) ) , ntohs(tuple->dport) );
+
+// 	ret->path = strndup ( path , sizeof(path) );
+
+// 	return ret;
+// }
+
+ppeer_info_t get_peer_info ( struct ip *iphdr,size_t total_len, pntoh_tcp_tuple5_t tuple)
 {
 	ppeer_info_t ret = 0;
 	size_t len = 0;
@@ -100,9 +206,9 @@ ppeer_info_t get_peer_info ( unsigned char *payload , size_t payload_len , pntoh
 
 	/* gets peer information */
 	ret = (ppeer_info_t) calloc ( 1 , sizeof ( peer_info_t ) );
-	ret->data_len = payload_len;
-	ret->data = (unsigned char*) calloc ( ret->data_len , sizeof ( unsigned char ) );
-	memcpy ( ret->data , payload , ret->data_len );
+	ret->total_len = total_len;
+	ret->iphdr = (struct ip*) calloc ( ret->total_len , sizeof ( struct ip ) );
+	memcpy ( ret->iphdr , iphdr , ret->total_len );
 
 	snprintf ( path , sizeof(path) , "%s:%d-" , inet_ntoa ( *(struct in_addr*)&(tuple->source) ) , ntohs(tuple->sport) );
 	len = strlen(path);
@@ -122,7 +228,7 @@ void free_peer_info ( ppeer_info_t pinfo )
 	if ( ! pinfo )
 		return;
 
-	free ( pinfo->data );
+	free ( pinfo->iphdr );
 	free ( pinfo->path );
 	free ( pinfo );
 
@@ -162,8 +268,9 @@ inline char *get_proto_description ( unsigned short proto )
 /**
  * @brief Writes the ppeer_info_t data field to disk
  */
-void write_data ( ppeer_info_t info )
+void write_data ( ppeer_info_t info,int seg_seq, unsigned long next_seq)
 {
+	nbSegments++;
 	int fd = 0;
 
 	if ( !info )
@@ -174,10 +281,27 @@ void write_data ( ppeer_info_t info )
 		fprintf ( stderr , "\n[e] Error %d writting data to \"%s\": %s" , errno , info->path , strerror( errno ) );
 		return;
 	}
-
-	write ( fd , info->data , info->data_len );
+	struct tcphdr 		*tcp;
+	size_t 				size_ip;
+	size_t				total_len;
+	size_t				size_tcp;
+	size_t				size_payload;
+	unsigned char		*payload;
+	// ip header
+	size_ip = info->iphdr->ip_hl * 4;
+	total_len = info->total_len;
+	print_ip_header(info->iphdr);
+	// tcp header
+	tcp = (struct tcphdr*)((unsigned char*)(info->iphdr) + size_ip);
+	if ( (size_tcp = tcp->th_off * 4) < sizeof(struct tcphdr) )
+		return;
+	print_tcp_header(tcp);
+	// data payload
+	payload = (unsigned char *)(info->iphdr) + size_ip + size_tcp;
+	size_payload = total_len - ( size_ip + size_tcp );
+	write ( fd , payload ,size_payload);
 	close ( fd );
-
+	printf("\nWrite data to: %s\n. Data: Segment SEQ: %d | Next Peer SEQ: %lu", info->path,seg_seq,next_seq);
 	return;
 }
 
@@ -186,6 +310,7 @@ void write_data ( ppeer_info_t info )
  */
 void send_tcp_segment ( struct ip *iphdr , pntoh_tcp_callback_t callback )
 {
+	// printf("\n\t SEND TCP SEGMENT\n");
 	ppeer_info_t		pinfo;
 	ntoh_tcp_tuple5_t	tcpt5;
 	pntoh_tcp_stream_t	stream;
@@ -200,99 +325,44 @@ void send_tcp_segment ( struct ip *iphdr , pntoh_tcp_callback_t callback )
 	// ip header
 	size_ip = iphdr->ip_hl * 4;
 	total_len = ntohs( iphdr->ip_len );
+	// print_ip_header(iphdr);
 	// tcp header
 	tcp = (struct tcphdr*)((unsigned char*)iphdr + size_ip);
 	if ( (size_tcp = tcp->th_off * 4) < sizeof(struct tcphdr) )
 		return;
+	// print_tcp_header(tcp);
 	// data payload
 	payload = (unsigned char *)iphdr + size_ip + size_tcp;
 	size_payload = total_len - ( size_ip + size_tcp );
-	/**
-	 * @brief Get the tuple5
-	 * @details Get the tuple5 of a tcp segment
-	 * 
-	 * @param iphdr IPv4 header
-	 * @param tcp tcp header
-	 * @param tcpt5 pointer to the output tuple5 struct
-	 * @return 
-	 * 
-    NTOH_ERROR_PARAMS
-    NTOH_OK
 
-	 */
 	ntoh_tcp_get_tuple5 ( iphdr , tcp , &tcpt5 );
 
 	/* Find a stream */
-	if ( !( stream = ntoh_tcp_find_stream( tcp_session , &tcpt5 ) ) )
-		/**
-		 * pntoh_tcp_stream_t ntoh_tcp_new_stream ( pntoh_tcp_session_t session , pntoh_tcp_tuple5_t tuple5 , pntoh_tcp_callback_t function ,void *udata , unsigned int *error, unsigned short enable_check_timeout, unsigned short enable_check_nowindow )
-		 * @brief Create a new tcp stream
-		 * @details Create a new tcp stream
-		 * 
-		 * @param tcp_session	TCP session
-		 * @param tuple5	identifying the new stream
-		 * @param callback	function callback after creating new stream
-		 * @param 0	User-data linked to the new stream
-		 * @param error	Returned error code:
-		 * value of error code:
-		 * 
-		    NTOH_ERROR_PARAMS
-		    NTOH_ERROR_NOKEY
-		    NTOH_ERROR_NOFUNCTION
-		    NTOH_ERROR_INVALID_TUPLE5
-		    NTOH_ERROR_NOSPACE
-		    NTOH_ERROR_NOMEM
-
-		 * @param enable_check_timeout	Enable check timeout
-		 * @param enable_check_nowindow	Enable check no window
-		 * @return NULL or a pointer to the new stream
-		 */
+	if ( !( stream = ntoh_tcp_find_stream( tcp_session , &tcpt5 ) ) ){
+		fprintf(stderr, "\n[i] Create new stream");
 		if ( ! ( stream = ntoh_tcp_new_stream( tcp_session , &tcpt5, callback , 0 , &error , 1 , 1 ) ) )
 		{
 			fprintf ( stderr , "\n[e] Error %d creating new stream: %s" , error , ntoh_get_errdesc ( error ) );
 			return;
+		}else{
+				printf("\n\t******************************************");
+                printf("\n\t*\t\t\t NEW STREAM \t\t\t*");
+                print_tcp_tuple5(tcpt5);
+                printf("\n\t******************************************");
 		}
+	}else{
+		fprintf(stderr, "\n[i] Continue with an existing stream");
+	}	
+		
 	// size_payload: size of data
 	if ( size_payload > 0 )
 		// data segment
-		pinfo = get_peer_info ( payload , size_payload , &tcpt5 );
+		// pinfo = get_peer_info ( payload , size_payload , &tcpt5 );
+		pinfo = get_peer_info ( iphdr,total_len,&tcpt5);
 	else
 		// ack
 		pinfo = 0;
-
-	/** Add a tcp segment to a stream 
-	 * @brief [brief description]
-	 * @details [long description]
-	 * 
-	 * @param tcp_session TCP Session
-	 * @param stream TCP stream where the new segment will be added
-	 * @param iphdr  IPv4 header
-	 * @param total_len Total length (IPv4 header + payload)
-	 * @param (void*)pinfo  User-defined data to be linked with the new segment
-	 * @return 
-	 * 
-	    NTOH_OK: No error
-	    NTOH_ERROR_PARAMS
-	    NTOH_SYNCHRONIZING: Not an error, but no segment was created (data acknowledged)
-	    NTOH_INCORRECT_IPHEADER
-	    NTOH_INCORRECT_LENGTH
-	    NTOH_INCORRECT_IP_HEADER_LENGTH
-	    NTOH_NO_ENOUGH_DATA
-	    NTOH_NOT_IPV4
-	    NTOH_IP_ADDRESSES_MISMATCH
-	    NTOH_NOT_TCP
-	    NTOH_INCORRECT_TCP_HEADER_LENGTH
-	    NTOH_INVALID_FLAGS
-	    NTOH_TCP_PORTS_MISMATCH
-	    NTOH_PAWS_FAILED
-	    NTOH_TOO_LOW_SEQ_NUMBER
-	    NTOH_TOO_LOW_ACK_NUMBER
-	    NTOH_HANDSHAKE_FAILED
-	    NTOH_MAX_SYN_RETRIES_REACHED
-	    NTOH_MAX_SYNACK_RETRIES_REACHED
-	    NTOH_NO_WINDOW_SPACE_LEFT
-
-	 */
+	// printf("\n\t TCP Header: %d | %d\n",ntohl(tcp->th_seq),ntohl(tcp->th_ack));
 	switch ( ( ret = ntoh_tcp_add_segment( tcp_session , stream, iphdr, total_len, (void*)pinfo ) ) )
 	{
 		case NTOH_OK:
@@ -307,102 +377,11 @@ void send_tcp_segment ( struct ip *iphdr , pntoh_tcp_callback_t callback )
 			free_peer_info ( pinfo );
 			break;
 	}
-
+	print_tcp_stream(stream);
 	return;
 }
 
-/**
- * @brief Sends a IPv4 fragment to libntoh
- */
-void send_ipv4_fragment ( struct ip *iphdr , pipv4_dfcallback_t callback )
-{
-	ntoh_ipv4_tuple4_t 	ipt4;
-	pntoh_ipv4_flow_t 	flow;
-	size_t			total_len;
-	int 			ret;
-	unsigned int		error;
 
-	// Get total length - ip header
-	total_len = ntohs( iphdr->ip_len );
-	/**
-	 * @brief Get the tuple4
-	 * @details Get the tuple4 - identification of a flow
-	 * 
-	 * @param r ip header
-	 * @param t4 tuple4 pointer to store result
-	 * 
-	 * @return NTOH_ERROR_PARAMS
-	 * NTOH_OK
-	 */
-	ntoh_ipv4_get_tuple4 ( iphdr , &ipt4 );
-	// Find an IPv4 flow: (pntoh_ipv4_session_t session, pntoh_ipv4_tuple4_t tuple4)
-	if ( !( flow = ntoh_ipv4_find_flow( ipv4_session , &ipt4 ) ) )
-		// create a new flow: (pntoh_ipv4_session_t session,pntoh_ipv4_tuple4_t tuple4, pipv4_dfcallback_t function, void *udata, usigned int *error)
-		if ( ! (flow = ntoh_ipv4_new_flow( ipv4_session , &ipt4, callback, 0 , &error )) )
-		{
-			fprintf ( stderr , "\n[e] Error %d creating new IPv4 flow: %s" , error , ntoh_get_errdesc ( error ) );
-			return;
-		}
-	/** 
-	* Add a fragment to a given IPv4 flow: (pntoh_ipv4_session_t session, pntoh_ipv4_flow_t flow, struct ip *iphdr, size_t len)
-	* len: total length = IPv4 header + payload
-	* return: 
-	* 	- NTOH_OK: on success
-	* 	
-	* 	If failure:
-	* 	 	NTOH_IP_INCORRECT_FLOW
-			NTOH_INCORRECT_IPHEADER
-			NTOH_INCORRECT_LENGTH
-			NTOH_INCORRECT_IP_HEADER_LENGTH
-			NTOH_NO_ENOUGH_DATA
-			NTOH_NOT_IPV4
-			NTOH_IP_ADDRESSES_MISMATCH
-			NTOH_NOT_AN_IP_FRAGMENT
-			NTOH_TOO_LOW_IP_FRAGMENT_LENGTH
-			NTOH_IP_FRAGMENT_OVERRUN
-	*/
-	if ( ( ret = ntoh_ipv4_add_fragment( ipv4_session , flow, iphdr, total_len ) ) )
-		fprintf( stderr, "\n[e] Error %d adding IPv4: %s", ret, ntoh_get_retval_desc( ret ) );
-
-	return;
-}
-
-/**
- * typedef void(*pntoh_tcp_callback_t) ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t origin, pntoh_tcp_peer_t destination, pntoh_tcp_segment_t segment, int reason, int extra );
- * @brief TCP callback
- * @details [long description]
- * 
- * @param stream TCP Stream
- * @param orig Sender of this segment
- * @param dest Receiver of this segment
- * @param seg Reassembled segment
- * @param reason  Why the segment is sent?
- * 
-    NTOH_REASON_DATA: We got a new segment
-    NTOH_REASON_SYNC: Not a segment but synchronization
-
- * @param extra Why the datagram is sent? (extra information) depends on "reason"
- * 
-
-    Reason: NTOH_REASON_DATA
-        NTOH_REASON_OOO
-        NTOH_REASON_NOWINDOW
-        NTOH_REASON_EXIT
-        NTOH_REASON_CLOSED
-        NTOH_REASON_TIMEDOUT
-
-    Reason: NTOH_REASON_SYNC
-        NTOH_REASON_MAX_SYN_RETRIES_REACHED
-        NTOH_REASON_MAX_SYNACK_RETRIES_REACHED
-        NTOH_REASON_HSFAILED
-        NTOH_REASON_EXIT
-        NTOH_REASON_TIMEDOUT
-        NTOH_REASON_CLOSED
-        NTOH_REASON_ESTABLISHED
-        NTOH_REASON_SYNC
-
- * 
- */
 void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tcp_peer_t dest , pntoh_tcp_segment_t seg , int reason , int extra )
 {
 	/* receive data only from the peer given by the user */
@@ -416,28 +395,13 @@ void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tc
 		return;
 	}
 
-	/*
-	ntoh_tcp_get_status
-	enum _ntoh_tcp_status_
-	{
-	    NTOH_STATUS_CLOSED = 0,
-	    NTOH_STATUS_LISTEN,
-	    NTOH_STATUS_SYNSENT,
-	    NTOH_STATUS_SYNRCV,
-	    NTOH_STATUS_ESTABLISHED,
-	    NTOH_STATUS_CLOSING,
-	    NTOH_STATUS_CLOSEWAIT,
-	    NTOH_STATUS_FINWAIT1,
-	    NTOH_STATUS_FINWAIT2,
-	    NTOH_STATUS_LASTACK,
-	    NTOH_STATUS_TIMEWAIT
-	};
-	*/
 	fprintf ( stderr , "\n[%s] %s:%d (%s | Window: %lu) ---> " , ntoh_tcp_get_status ( stream->status ) , inet_ntoa( *(struct in_addr*) &orig->addr ) , ntohs(orig->port) , ntoh_tcp_get_status ( orig->status ) , orig->totalwin );
 	fprintf ( stderr , "%s:%d (%s | Window: %lu)\n\t" , inet_ntoa( *(struct in_addr*) &dest->addr ) , ntohs(dest->port) , ntoh_tcp_get_status ( dest->status ) , dest->totalwin );
 
-	if ( seg != 0 )
+	if ( seg != 0 ){
+		// printf("\n\t TCP callback: %lu | %lu\n",seg->seq,seg->ack);
 		fprintf ( stderr , "SEQ: %lu ACK: %lu Next SEQ: %lu" , seg->seq , seg->ack , orig->next_seq );
+	}
 
 	switch ( reason )
 	{
@@ -446,6 +410,8 @@ void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tc
 	        {
 	            case NTOH_REASON_MAX_SYN_RETRIES_REACHED:
 	            case NTOH_REASON_MAX_SYNACK_RETRIES_REACHED:
+	            printf("finished something!\n");
+	            break;
 	            case NTOH_REASON_HSFAILED:
 	            case NTOH_REASON_EXIT:
 	            case NTOH_REASON_TIMEDOUT:
@@ -465,7 +431,7 @@ void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tc
 			fprintf ( stderr , " | Data segment | Bytes: %i" , seg->payload_len );
 
 			/* write data */
-			write_data( (ppeer_info_t) seg->user_data );
+			write_data( (ppeer_info_t) seg->user_data,seg->seq,orig->next_seq);
 
 			if ( extra != 0 )
 					fprintf ( stderr , "- %s" , ntoh_get_reason ( extra ) );
@@ -481,6 +447,35 @@ void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tc
 	return;
 }
 
+
+/**
+ * @brief Sends a IPv4 fragment to libntoh
+ */
+void send_ipv4_fragment ( struct ip *iphdr , pipv4_dfcallback_t callback )
+{
+	ntoh_ipv4_tuple4_t 	ipt4;
+	pntoh_ipv4_flow_t 	flow;
+	size_t			total_len;
+	int 			ret;
+	unsigned int		error;
+
+	// Get total length - ip header
+	total_len = ntohs( iphdr->ip_len );
+
+	ntoh_ipv4_get_tuple4 ( iphdr , &ipt4 );
+	// Find an IPv4 flow: (pntoh_ipv4_session_t session, pntoh_ipv4_tuple4_t tuple4)
+	if ( !( flow = ntoh_ipv4_find_flow( ipv4_session , &ipt4 ) ) )
+		// create a new flow: (pntoh_ipv4_session_t session,pntoh_ipv4_tuple4_t tuple4, pipv4_dfcallback_t function, void *udata, usigned int *error)
+		if ( ! (flow = ntoh_ipv4_new_flow( ipv4_session , &ipt4, callback, 0 , &error )) )
+		{
+			fprintf ( stderr , "\n[e] Error %d creating new IPv4 flow: %s" , error , ntoh_get_errdesc ( error ) );
+			return;
+		}
+	if ( ( ret = ntoh_ipv4_add_fragment( ipv4_session , flow, iphdr, total_len ) ) )
+		fprintf( stderr, "\n[e] Error %d adding IPv4: %s", ret, ntoh_get_retval_desc( ret ) );
+
+	return;
+}
 /**
  * @brief IPv4 callback
  * @details be called each time new flow is created
@@ -682,16 +677,20 @@ int main ( int argc , char *argv[] )
 	}
 
 	fprintf ( stderr , "\n[i] Max. IPv4 flows allowed: %d\n\n" , ntoh_ipv4_get_size ( ipv4_session ) );
-
+	int count=0;
 	/* capture starts */
-	while ( ( packet = pcap_next( handle, &header ) ) != 0 )
+	while ( ( packet = pcap_next( handle, &header ) ) != 0 && count<100)
 	{
+		printf("\n\n\n\t**************");
+        printf("\n\t* NEW PACKET %d*",count);
+        printf("\n\t**************");
+		count++;
 		/* get packet headers */
 		/*Check IP header*/
 		ip = (struct ip*) ( packet + sizeof ( struct ether_header ) );
 		if ( (ip->ip_hl * 4 ) < sizeof(struct ip) )
 			continue;
-
+		
 		/* it is an IPv4 fragment */
 		/** Macro to check if an IPv4 datagram is part of a fragment datagram
 		#define NTOH_IPV4_IS_FRAGMENT(off)          ( ( (8*(ntohs(off) & 0x1FFF)) > 0 || (ntohs(off) & 0x2000) ) && !(ntohs(off) & 0x4000) )
@@ -701,7 +700,14 @@ int main ( int argc , char *argv[] )
 		/* or a TCP segment */
 		else if ( ip->ip_p == IPPROTO_TCP )
 			send_tcp_segment ( ip , &tcp_callback );
+		// Get the number of stored streams in a session
+		tcps = ntoh_tcp_count_streams( tcp_session );
+		//Get the number of stored IPv4 flows in a session
+		ipf = ntoh_ipv4_count_flows ( ipv4_session );
+		/* no streams left */
+		fprintf( stderr, "\n\n[+] There are currently %i stored TCP stream(s) and %i IPv4 flow(s)\n" , tcps , ipf );
 	}
+	printf("Total number of ordered packet with data: %d\n", nbSegments);
 	// Get the number of stored streams in a session
 	tcps = ntoh_tcp_count_streams( tcp_session );
 	//Get the number of stored IPv4 flows in a session
