@@ -1,4 +1,4 @@
-Introduction
+#Introduction
 ============
 
 Q: What is libntoh?
@@ -10,11 +10,11 @@ A: It's true there are some libraries which aims to do the same things (like lib
 Q: Which protocols does libntoh support?
 A: Currently libntoh performs IPv4 defragmentation and TCP reassembly
 
-Mailing List
+#Mailing List
 ============
 There is a mailing list for libntoh development issues: libntoh-dev@safetybits.net
 
-Getting the source
+#Getting the source
 ==================
 
 $ git clone git://github.com/sch3m4/libntoh.git
@@ -27,7 +27,7 @@ Receiving objects: 100% (765/765), 1009.13 KiB | 416 KiB/s, done.
 Resolving deltas: 100% (341/341), done.
 $
 
-Dependencies
+#Dependencies
 ============
 
 To successfully compile libntoh you only need gcc, make, cmake, pkg-config and libpthread-dev.
@@ -46,7 +46,7 @@ Note: pkg-config isn't really needed but it helps. (See "ntohexample" compilatio
 You need CMake to compile libntoh and ntohexample.
 
 
-Compilation instructions
+#Compilation instructions
 ========================
 
 $ cd libntoh/src
@@ -120,7 +120,7 @@ For a more detailed description refer to
 	https://github.com/sch3m4/libntoh/wiki	
 	
 
-Python Wrapper
+#Python Wrapper
 ==============
 
 Once you have installed libntoh, you can use the python wrapper to comunicate with the library as follows:
@@ -138,7 +138,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 A more complete example will be added soon.
 	
 
-"ntohexample" Compilation instructions
+#"ntohexample" Compilation instructions
 ======================================
 
 ../libntoh$ cd example
@@ -168,7 +168,7 @@ So the new installation prefix will be "/usr"
 For more information, refer to the wiki page.
 
 
-"ntohexample" Output:
+#"ntohexample" Output:
 =====================
 
 $ sudo ./ntohexample 
