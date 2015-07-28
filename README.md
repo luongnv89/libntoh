@@ -1,22 +1,24 @@
 #Introduction
-============
 
-Q: What is libntoh?
+**Q: What is libntoh?**
+
 A: Libntoh aims to be an user-friendly library to provide a easy way to perform defragmentation and reassembly of network/transport/(more?) protocols.
 
-Q: Why libntoh?
+**Q: Why libntoh?**
+
 A: It's true there are some libraries which aims to do the same things (like libnids), but libntoh is intended to provide a flexible, thread-safe and highly configurable environment for the final user. And most of all, libntoh is released under Modified BSD License to avoid many license issues.
 
-Q: Which protocols does libntoh support?
+**Q: Which protocols does libntoh support?**
+
 A: Currently libntoh performs IPv4 defragmentation and TCP reassembly
 
 #Mailing List
-============
+
 There is a mailing list for libntoh development issues: libntoh-dev@safetybits.net
 
 #Getting the source
-==================
 
+```sh
 $ git clone git://github.com/sch3m4/libntoh.git
 Cloning into 'libntoh'...
 remote: Reusing existing pack: 732, done.
@@ -25,20 +27,23 @@ remote: Compressing objects: 100% (33/33), done.
 remote: Total 765 (delta 12), reused 0 (delta 0)
 Receiving objects: 100% (765/765), 1009.13 KiB | 416 KiB/s, done.
 Resolving deltas: 100% (341/341), done.
-$
+```
 
 #Dependencies
-============
+
 
 To successfully compile libntoh you only need gcc, make, cmake, pkg-config and libpthread-dev.
 
 Debian-like OS:
 
-	$ sudo apt-get install cmake libpthread-dev gcc make build-essential pkg-config swig
-
+```sh
+$ sudo apt-get install cmake libpthread-dev gcc make build-essential pkg-config swig
+```
 If you want to generate the source code documentation, you will also need doxygen:
 
-	$ sudo apt-get install doxygen
+```sh
+$ sudo apt-get install doxygen
+```
 
 Note: pkg-config isn't really needed but it helps. (See "ntohexample" compilation)
 
@@ -47,8 +52,8 @@ You need CMake to compile libntoh and ntohexample.
 
 
 #Compilation instructions
-========================
 
+```sh
 $ cd libntoh/src
 ../src$ mkdir build
 ../src$ cd build
@@ -118,13 +123,13 @@ Install the project...
 
 For a more detailed description refer to
 	https://github.com/sch3m4/libntoh/wiki	
-	
+```	
 
 #Python Wrapper
-==============
 
 Once you have installed libntoh, you can use the python wrapper to comunicate with the library as follows:
 
+```sh
 ~$ python
 Python 2.7.3 (default, Mar 14 2014, 11:57:14) 
 [GCC 4.7.2] on linux2
@@ -134,13 +139,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 0.4a
 >>> quit()
 ~$
-
+```
 A more complete example will be added soon.
 	
 
 #"ntohexample" Compilation instructions
-======================================
 
+```sh
 ../libntoh$ cd example
 ../libntoh/example$ ./build.sh 
 [i] pkg-config found: /usr/bin/pkg-config
@@ -151,26 +156,29 @@ A more complete example will be added soon.
 Linking C executable ntohexample
 [100%] Built target ntohexample
 ../libntoh/example$
+```
 
 The default installation prefix is "/usr/local", so if you plan to link against libntoh using pkg-config
 remember to add "/usr/local/lib/pkgconfig" to PKG_CONFIG_PATH:
 
+```sh
 $ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 $ pkg-config --libs --cflags ntoh
 -I/usr/local/include/libntoh  -L/usr/local/lib -lntoh
-
+```
 On the other hand you can change the installation prefix by defining CMAKE_INSTALL_PREFIX:
 
+```sh
 $ cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+```
 
 So the new installation prefix will be "/usr"
 
 For more information, refer to the wiki page.
 
-
 #"ntohexample" Output:
-=====================
 
+```sh
 $ sudo ./ntohexample 
 
 ###########################
@@ -193,7 +201,11 @@ $ sudo ./ntohexample
 	-F | --filter <val> ----> Capture filter (must contain "tcp" or "ip")
 	-c | --client ----------> Receive client data only
 	-s | --server ----------> Receive server data only
+```
 
+Capture live streaming
+
+```sh
 $ sudo ./ntohexample -i eth0 -F "tcp and host 10.0.0.1 and port 22"
 
 ###########################
@@ -299,3 +311,4 @@ $ sudo ./ntohexample -i eth0 -F "tcp and host 10.0.0.1 and port 22"
 
 [+] Capture finished!
 $
+```
