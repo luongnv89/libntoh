@@ -1,5 +1,0 @@
-<map id="ntoh_ipv6_flow_t" name="ntoh_ipv6_flow_t">
-<area shape="rect" id="node2" href="$structntoh__ipv6__tuple4__t.html" title="Struct to generate the flow key. " alt="" coords="5,6,147,127"/>
-<area shape="rect" id="node3" href="$struct__ipv6__fragment__.html" title="Struct to store the information of each fragment. " alt="" coords="172,13,300,120"/>
-<area shape="rect" id="node4" href="$structntoh__lock__t.html" title="{ntoh_lock_t\n|+ mutex\l+ pcond\l+ use\l|}" alt="" coords="393,13,487,120"/>
-</map>

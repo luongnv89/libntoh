@@ -1,4 +1,0 @@
-<map id="ntoh_ipv4_init" name="ntoh_ipv4_init">
-<area shape="rect" id="node2" href="$ipv4defrag_8h.html#a8fd4011f06ea8b38964d324be07cf35e" title="Initializes the IPv4 defragmentation. " alt="" coords="166,29,277,56"/>
-<area shape="rect" id="node3" href="$ipv4defrag_8c.html#a747aa58cdf0daac73c2ea82aa336e8ce" title="Creates a new session with independent parameters to reassemble TCP segments. " alt="" coords="325,29,496,56"/>
-</map>

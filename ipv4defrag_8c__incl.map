@@ -1,8 +1,0 @@
-<map id="ipv4defrag.c" name="ipv4defrag.c">
-<area shape="rect" id="node7" href="$libntoh_8h.html" title="libntoh.h" alt="" coords="379,80,455,107"/>
-<area shape="rect" id="node10" href="$common_8h.html" title="common.h" alt="" coords="15,155,105,181"/>
-<area shape="rect" id="node11" href="$ipv4defrag_8h.html" title="ipv4defrag.h" alt="" coords="495,155,596,181"/>
-<area shape="rect" id="node14" href="$ipv6defrag_8h.html" title="ipv6defrag.h" alt="" coords="129,155,231,181"/>
-<area shape="rect" id="node16" href="$tcpreassembly_8h.html" title="tcpreassembly.h" alt="" coords="671,155,797,181"/>
-<area shape="rect" id="node20" href="$sfhash_8h.html" title="sfhash.h" alt="" coords="1018,229,1093,256"/>
-</map>

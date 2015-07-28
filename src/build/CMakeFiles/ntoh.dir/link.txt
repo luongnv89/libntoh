@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq libntoh.a  CMakeFiles/ntoh.dir/libntoh.c.o CMakeFiles/ntoh.dir/tcpreassembly.c.o CMakeFiles/ntoh.dir/ipv4defrag.c.o CMakeFiles/ntoh.dir/ipv6defrag.c.o CMakeFiles/ntoh.dir/common.c.o CMakeFiles/ntoh.dir/sfhash.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libntoh.a

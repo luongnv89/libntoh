@@ -1,9 +1,0 @@
-<map id="inc/libntoh.h" name="inc/libntoh.h">
-<area shape="rect" id="node2" href="$libntoh_p_y_t_h_o_n__wrap_8c.html" title="build/libntohPYTHON\l_wrap.c" alt="" coords="5,81,155,122"/>
-<area shape="rect" id="node3" href="$common_8c.html" title="common.c" alt="" coords="180,88,271,115"/>
-<area shape="rect" id="node4" href="$ipv4defrag_8c.html" title="ipv4defrag.c" alt="" coords="295,88,395,115"/>
-<area shape="rect" id="node5" href="$ipv6defrag_8c.html" title="ipv6defrag.c" alt="" coords="419,88,519,115"/>
-<area shape="rect" id="node6" href="$libntoh_8c.html" title="libntoh.c" alt="" coords="543,88,619,115"/>
-<area shape="rect" id="node7" href="$sfhash_8c.html" title="sfhash.c" alt="" coords="644,88,717,115"/>
-<area shape="rect" id="node8" href="$tcpreassembly_8c.html" title="tcpreassembly.c" alt="" coords="743,88,868,115"/>
-</map>

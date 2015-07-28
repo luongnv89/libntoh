@@ -1,4 +1,0 @@
-<map id="ntoh_ipv6_init" name="ntoh_ipv6_init">
-<area shape="rect" id="node2" href="$ipv6defrag_8h.html#ab0a121ef041811b426b17ee60bd33ebd" title="Initializes the IPv6 defragmentation. " alt="" coords="166,29,277,56"/>
-<area shape="rect" id="node3" href="$ipv6defrag_8c.html#a2cddaf8d48fbba5e5702b3fac5f02ece" title="Creates a new session with independent parameters to reassemble TCP segments. " alt="" coords="325,29,496,56"/>
-</map>

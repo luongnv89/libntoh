@@ -1,6 +1,0 @@
-<map id="_tcp_stream_" name="_tcp_stream_">
-<area shape="rect" id="node2" href="$structntoh__tcp__peer__t.html" title="peer information " alt="" coords="5,235,131,503"/>
-<area shape="rect" id="node3" href="$struct__tcp__segment__.html" title="data sent to user&#45;function " alt="" coords="8,5,128,171"/>
-<area shape="rect" id="node4" href="$structntoh__tcp__tuple5__t.html" title="data to generate the connection key " alt="" coords="155,301,292,437"/>
-<area shape="rect" id="node5" href="$structntoh__lock__t.html" title="{ntoh_lock_t\n|+ mutex\l+ pcond\l+ use\l|}" alt="" coords="317,316,411,423"/>
-</map>
