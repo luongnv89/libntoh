@@ -1,9 +1,12 @@
+/*
+* This is the simple example which aims to show the version of libntoh and pcap libraries. Then it shows a message everytime a packet has come
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
 #include <getopt.h>
 #include <pcap.h>
-#include <libntoh.h>
+#include "libntoh/libntoh.h"
 
 #define SIZE_ETHERNET 14
 
@@ -115,9 +118,11 @@ int main ( int argc , char *argv[] )
 
     signal ( SIGINT , &shandler );
     /* capture starts */
+    int count=0;
     while ( ( packet = pcap_next( handle, &header ) ) != 0 )
     {
-        fprintf ( stderr , "\nGot a packet!");
+	count++;
+        fprintf ( stderr , "\nGot a packet! %d",count);
     }
 
     shandler(0);

@@ -3,7 +3,7 @@
 #include <signal.h>
 #include <getopt.h>
 #include <pcap.h>
-#include <libntoh.h>
+#include <libntoh/libntoh.h>
 
 #define SIZE_ETHERNET 14
 
