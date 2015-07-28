@@ -1,0 +1,104 @@
+\hypertarget{struct__tcp__segment__}{\section{\-\_\-tcp\-\_\-segment\-\_\- Struct Reference}
+\label{struct__tcp__segment__}\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}}
+}
+
+
+data sent to user-\/function  
+
+
+
+
+{\ttfamily \#include $<$tcpreassembly.\-h$>$}
+
+
+
+Collaboration diagram for \-\_\-tcp\-\_\-segment\-\_\-\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{struct__tcp__segment____coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__tcp__segment__}{\-\_\-tcp\-\_\-segment\-\_\-} $\ast$ \hyperlink{struct__tcp__segment___ae87e4b1042e85d16f28dbf276445d7e9}{next}
+\item 
+unsigned long \hyperlink{struct__tcp__segment___a189930c4babdc38135a74db479534069}{seq}
+\begin{DoxyCompactList}\small\item\em S\-E\-Q number. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{struct__tcp__segment___af10658522b9bf1a01d186c69c70efc01}{ack}
+\begin{DoxyCompactList}\small\item\em A\-C\-K number. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{struct__tcp__segment___a78ac89a4a0f57ffa7c2ecf31749aa390}{flags}
+\begin{DoxyCompactList}\small\item\em flags \end{DoxyCompactList}\item 
+unsigned int \hyperlink{struct__tcp__segment___a3d431f3cd732945366a2d6d553a69f5c}{payload\-\_\-len}
+\begin{DoxyCompactList}\small\item\em payload length \end{DoxyCompactList}\item 
+unsigned short \hyperlink{struct__tcp__segment___a2c09a48f3f12ff0e1ed8c7699f52a37d}{origin}
+\begin{DoxyCompactList}\small\item\em segment origin \end{DoxyCompactList}\item 
+struct timeval \hyperlink{struct__tcp__segment___a9cf96982557d56650f0f4cd3762f05a0}{tv}
+\begin{DoxyCompactList}\small\item\em T\-C\-P timestamp. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{struct__tcp__segment___a0f53d287ac7c064d1a49d4bd93ca1cb9}{user\-\_\-data}
+\begin{DoxyCompactList}\small\item\em user provided data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+data sent to user-\/function 
+
+\subsection{Field Documentation}
+\hypertarget{struct__tcp__segment___af10658522b9bf1a01d186c69c70efc01}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!ack@{ack}}
+\index{ack@{ack}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{ack}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long ack}}\label{struct__tcp__segment___af10658522b9bf1a01d186c69c70efc01}
+
+
+A\-C\-K number. 
+
+\hypertarget{struct__tcp__segment___a78ac89a4a0f57ffa7c2ecf31749aa390}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!flags@{flags}}
+\index{flags@{flags}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char flags}}\label{struct__tcp__segment___a78ac89a4a0f57ffa7c2ecf31749aa390}
+
+
+flags 
+
+\hypertarget{struct__tcp__segment___ae87e4b1042e85d16f28dbf276445d7e9}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!next@{next}}
+\index{next@{next}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-tcp\-\_\-segment\-\_\-}$\ast$ next}}\label{struct__tcp__segment___ae87e4b1042e85d16f28dbf276445d7e9}
+\hypertarget{struct__tcp__segment___a2c09a48f3f12ff0e1ed8c7699f52a37d}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!origin@{origin}}
+\index{origin@{origin}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{origin}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short origin}}\label{struct__tcp__segment___a2c09a48f3f12ff0e1ed8c7699f52a37d}
+
+
+segment origin 
+
+\hypertarget{struct__tcp__segment___a3d431f3cd732945366a2d6d553a69f5c}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!payload\-\_\-len@{payload\-\_\-len}}
+\index{payload\-\_\-len@{payload\-\_\-len}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{payload\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int payload\-\_\-len}}\label{struct__tcp__segment___a3d431f3cd732945366a2d6d553a69f5c}
+
+
+payload length 
+
+\hypertarget{struct__tcp__segment___a189930c4babdc38135a74db479534069}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!seq@{seq}}
+\index{seq@{seq}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{seq}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long seq}}\label{struct__tcp__segment___a189930c4babdc38135a74db479534069}
+
+
+S\-E\-Q number. 
+
+\hypertarget{struct__tcp__segment___a9cf96982557d56650f0f4cd3762f05a0}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!tv@{tv}}
+\index{tv@{tv}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{tv}]{\setlength{\rightskip}{0pt plus 5cm}struct timeval tv}}\label{struct__tcp__segment___a9cf96982557d56650f0f4cd3762f05a0}
+
+
+T\-C\-P timestamp. 
+
+\hypertarget{struct__tcp__segment___a0f53d287ac7c064d1a49d4bd93ca1cb9}{\index{\-\_\-tcp\-\_\-segment\-\_\-@{\-\_\-tcp\-\_\-segment\-\_\-}!user\-\_\-data@{user\-\_\-data}}
+\index{user\-\_\-data@{user\-\_\-data}!_tcp_segment_@{\-\_\-tcp\-\_\-segment\-\_\-}}
+\subsubsection[{user\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ user\-\_\-data}}\label{struct__tcp__segment___a0f53d287ac7c064d1a49d4bd93ca1cb9}
+
+
+user provided data 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{tcpreassembly_8h}{tcpreassembly.\-h}\end{DoxyCompactItemize}

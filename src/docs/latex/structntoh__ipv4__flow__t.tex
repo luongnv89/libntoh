@@ -1,0 +1,122 @@
+\hypertarget{structntoh__ipv4__flow__t}{\section{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t Struct Reference}
+\label{structntoh__ipv4__flow__t}\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+}
+
+
+Struct to store the information of each I\-Pv4 flow.  
+
+
+
+
+{\ttfamily \#include $<$ipv4defrag.\-h$>$}
+
+
+
+Collaboration diagram for ntoh\-\_\-ipv4\-\_\-flow\-\_\-t\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structntoh__ipv4__flow__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structntoh__ipv4__tuple4__t}{ntoh\-\_\-ipv4\-\_\-tuple4\-\_\-t} \hyperlink{structntoh__ipv4__flow__t_a3d4334cd1cad89d0b3401c65411a9cad}{ident}
+\begin{DoxyCompactList}\small\item\em flow identification data \end{DoxyCompactList}\item 
+\hyperlink{ipv4defrag_8h_ab2ae468c8e84e7b93531ad554b039ca4}{ntoh\-\_\-ipv4\-\_\-key\-\_\-t} \hyperlink{structntoh__ipv4__flow__t_a93bab182dfe815bbd3f8bd00a6a4d4f7}{key}
+\begin{DoxyCompactList}\small\item\em flow key \end{DoxyCompactList}\item 
+\hyperlink{ipv4defrag_8h_a9b62b0538aa0f37ab5ed16c1d5f24256}{pntoh\-\_\-ipv4\-\_\-fragment\-\_\-t} \hyperlink{structntoh__ipv4__flow__t_a54c94fcc5ec977612392fc7e3bec767f}{fragments}
+\begin{DoxyCompactList}\small\item\em fragments list \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{structntoh__ipv4__flow__t_a25cdc91a1ce3b46649beaacf6315dee7}{meat}
+\begin{DoxyCompactList}\small\item\em total amount of received data \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{structntoh__ipv4__flow__t_a3fab45bb4d7cd7e889bdf00080096e8e}{total}
+\begin{DoxyCompactList}\small\item\em total amount of expected data \end{DoxyCompactList}\item 
+struct ip $\ast$ \hyperlink{structntoh__ipv4__flow__t_ac53ff70a1958fe8aea9dd55acb1792dd}{final\-\_\-iphdr}
+\begin{DoxyCompactList}\small\item\em final fragment received? \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{structntoh__ipv4__flow__t_aea3dcf0c8de30d192ee92494131c4996}{function}
+\begin{DoxyCompactList}\small\item\em user defined function to receive defragmented packets \end{DoxyCompactList}\item 
+struct timeval \hyperlink{structntoh__ipv4__flow__t_a9d115049a50ba4e69eb04c23c973a4a2}{last\-\_\-activ}
+\begin{DoxyCompactList}\small\item\em last activity \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{structntoh__ipv4__flow__t_a697ce711b67313990d351b5c95f87aed}{udata}
+\begin{DoxyCompactList}\small\item\em user-\/defined data \end{DoxyCompactList}\item 
+\hyperlink{structntoh__lock__t}{ntoh\-\_\-lock\-\_\-t} \hyperlink{structntoh__ipv4__flow__t_aad15823e4f2835531e6a02321cd53f7e}{lock}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct to store the information of each I\-Pv4 flow. 
+
+\subsection{Field Documentation}
+\hypertarget{structntoh__ipv4__flow__t_ac53ff70a1958fe8aea9dd55acb1792dd}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!final\-\_\-iphdr@{final\-\_\-iphdr}}
+\index{final\-\_\-iphdr@{final\-\_\-iphdr}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{final\-\_\-iphdr}]{\setlength{\rightskip}{0pt plus 5cm}struct ip$\ast$ final\-\_\-iphdr}}\label{structntoh__ipv4__flow__t_ac53ff70a1958fe8aea9dd55acb1792dd}
+
+
+final fragment received? 
+
+\hypertarget{structntoh__ipv4__flow__t_a54c94fcc5ec977612392fc7e3bec767f}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!fragments@{fragments}}
+\index{fragments@{fragments}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{fragments}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-ipv4\-\_\-fragment\-\_\-t} fragments}}\label{structntoh__ipv4__flow__t_a54c94fcc5ec977612392fc7e3bec767f}
+
+
+fragments list 
+
+\hypertarget{structntoh__ipv4__flow__t_aea3dcf0c8de30d192ee92494131c4996}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!function@{function}}
+\index{function@{function}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ function}}\label{structntoh__ipv4__flow__t_aea3dcf0c8de30d192ee92494131c4996}
+
+
+user defined function to receive defragmented packets 
+
+\hypertarget{structntoh__ipv4__flow__t_a3d4334cd1cad89d0b3401c65411a9cad}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!ident@{ident}}
+\index{ident@{ident}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{ident}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-ipv4\-\_\-tuple4\-\_\-t} ident}}\label{structntoh__ipv4__flow__t_a3d4334cd1cad89d0b3401c65411a9cad}
+
+
+flow identification data 
+
+\hypertarget{structntoh__ipv4__flow__t_a93bab182dfe815bbd3f8bd00a6a4d4f7}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!key@{key}}
+\index{key@{key}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-ipv4\-\_\-key\-\_\-t} key}}\label{structntoh__ipv4__flow__t_a93bab182dfe815bbd3f8bd00a6a4d4f7}
+
+
+flow key 
+
+\hypertarget{structntoh__ipv4__flow__t_a9d115049a50ba4e69eb04c23c973a4a2}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!last\-\_\-activ@{last\-\_\-activ}}
+\index{last\-\_\-activ@{last\-\_\-activ}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{last\-\_\-activ}]{\setlength{\rightskip}{0pt plus 5cm}struct timeval last\-\_\-activ}}\label{structntoh__ipv4__flow__t_a9d115049a50ba4e69eb04c23c973a4a2}
+
+
+last activity 
+
+\hypertarget{structntoh__ipv4__flow__t_aad15823e4f2835531e6a02321cd53f7e}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!lock@{lock}}
+\index{lock@{lock}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-lock\-\_\-t} lock}}\label{structntoh__ipv4__flow__t_aad15823e4f2835531e6a02321cd53f7e}
+\hypertarget{structntoh__ipv4__flow__t_a25cdc91a1ce3b46649beaacf6315dee7}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!meat@{meat}}
+\index{meat@{meat}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{meat}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t meat}}\label{structntoh__ipv4__flow__t_a25cdc91a1ce3b46649beaacf6315dee7}
+
+
+total amount of received data 
+
+\hypertarget{structntoh__ipv4__flow__t_a3fab45bb4d7cd7e889bdf00080096e8e}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!total@{total}}
+\index{total@{total}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t total}}\label{structntoh__ipv4__flow__t_a3fab45bb4d7cd7e889bdf00080096e8e}
+
+
+total amount of expected data 
+
+\hypertarget{structntoh__ipv4__flow__t_a697ce711b67313990d351b5c95f87aed}{\index{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}!udata@{udata}}
+\index{udata@{udata}!ntoh_ipv4_flow_t@{ntoh\-\_\-ipv4\-\_\-flow\-\_\-t}}
+\subsubsection[{udata}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ udata}}\label{structntoh__ipv4__flow__t_a697ce711b67313990d351b5c95f87aed}
+
+
+user-\/defined data 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{ipv4defrag_8h}{ipv4defrag.\-h}\end{DoxyCompactItemize}

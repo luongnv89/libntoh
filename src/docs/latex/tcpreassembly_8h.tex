@@ -1,0 +1,706 @@
+\hypertarget{tcpreassembly_8h}{\section{inc/tcpreassembly.h File Reference}
+\label{tcpreassembly_8h}\index{inc/tcpreassembly.\-h@{inc/tcpreassembly.\-h}}
+}
+{\ttfamily \#include $<$netinet/tcp.\-h$>$}\\*
+{\ttfamily \#include $<$netinet/ip.\-h$>$}\\*
+{\ttfamily \#include $<$sys/socket.\-h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\-h$>$}\\*
+{\ttfamily \#include $<$sys/time.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}sfhash.\-h\char`\"{}}\\*
+Include dependency graph for tcpreassembly.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tcpreassembly_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tcpreassembly_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structntoh__tcp__tuple5__t}{ntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}
+\begin{DoxyCompactList}\small\item\em data to generate the connection key \end{DoxyCompactList}\item 
+struct \hyperlink{struct__tcp__segment__}{\-\_\-tcp\-\_\-segment\-\_\-}
+\begin{DoxyCompactList}\small\item\em data sent to user-\/function \end{DoxyCompactList}\item 
+struct \hyperlink{structntoh__tcp__peer__t}{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}
+\begin{DoxyCompactList}\small\item\em peer information \end{DoxyCompactList}\item 
+struct \hyperlink{struct__tcp__stream__}{\-\_\-tcp\-\_\-stream\-\_\-}
+\begin{DoxyCompactList}\small\item\em connection data \end{DoxyCompactList}\item 
+struct \hyperlink{struct__tcp__session__}{\-\_\-tcp\-\_\-session\-\_\-}
+\begin{DoxyCompactList}\small\item\em T\-C\-P session data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{tcpreassembly_8h_a0e25ec3d9c374c5e6dceeb9341baf766}{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}
+\item 
+\#define \hyperlink{tcpreassembly_8h_a160418e1544e8d847cf611e2d72e5f84}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S}~4096
+\begin{DoxyCompactList}\small\item\em max allowed connections \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_a18eb1dac5b9667ce2ce1b8d867da397b}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S}~5
+\begin{DoxyCompactList}\small\item\em max S\-Y\-N retries \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_a565a2764e26e7be15417f1bb5e23e6ee}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S}~5
+\begin{DoxyCompactList}\small\item\em max S\-Y\-N/\-A\-C\-K retries \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_a7d96781205a92761b5f0a7cd1620b7c9}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~5
+\begin{DoxyCompactList}\small\item\em S\-Y\-N/\-A\-C\-K timeout. \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_ac41522f3f6aec6c60612bd59e50f87ee}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}~5
+\begin{DoxyCompactList}\small\item\em A\-C\-K -\/$>$ S\-Y\-N timeout. \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_ad4038e549481187113c5534e47e520a4}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}~60
+\begin{DoxyCompactList}\small\item\em max. \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_a1aea7b42ff17d7e6ef851d22c0894c7d}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}~60
+\begin{DoxyCompactList}\small\item\em max. \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_a37401b8dc4091b4fff95802f4577e1ba}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~2$\ast$\hyperlink{tcpreassembly_8h_ad4038e549481187113c5534e47e520a4}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}
+\begin{DoxyCompactList}\small\item\em Default timeout for T\-I\-M\-E\-W\-A\-I\-T tcp connections. \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_af851947f927bce5241f7c57de437cd7e}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S}(max)~(max$>$0?max/3\-:\hyperlink{tcpreassembly_8h_a160418e1544e8d847cf611e2d72e5f84}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S}/3)
+\begin{DoxyCompactList}\small\item\em Macro to set the default T\-I\-M\-E\-W\-A\-I\-T for new connections. \end{DoxyCompactList}\item 
+\#define \hyperlink{tcpreassembly_8h_a43844e2294509ffb5baf2971bec79336}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y}~3000
+\begin{DoxyCompactList}\small\item\em Delay to check session's streams timeout (ms) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \hyperlink{tcpreassembly_8h_aa3f9c3d7e8a394f8b2f6329d8f5a8567}{ntoh\-\_\-tcp\-\_\-key\-\_\-t}
+\begin{DoxyCompactList}\small\item\em key to identify connections \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structntoh__tcp__tuple5__t}{ntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} $\ast$ \hyperlink{tcpreassembly_8h_ad6e28a6b9151048e9f293920c2a41b72}{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}
+\item 
+typedef struct \hyperlink{struct__tcp__segment__}{\-\_\-tcp\-\_\-segment\-\_\-} \hyperlink{tcpreassembly_8h_a48372e31909b7d98df42a5a15e7058e3}{ntoh\-\_\-tcp\-\_\-segment\-\_\-t}
+\begin{DoxyCompactList}\small\item\em data sent to user-\/function \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct__tcp__segment__}{\-\_\-tcp\-\_\-segment\-\_\-} $\ast$ \hyperlink{tcpreassembly_8h_a1f60f4065e8694dbf82c9896925295b3}{pntoh\-\_\-tcp\-\_\-segment\-\_\-t}
+\item 
+typedef struct \hyperlink{structntoh__tcp__peer__t}{ntoh\-\_\-tcp\-\_\-peer\-\_\-t} $\ast$ \hyperlink{tcpreassembly_8h_a90b00598acf82219ee093cd08ae60476}{pntoh\-\_\-tcp\-\_\-peer\-\_\-t}
+\item 
+typedef struct \hyperlink{struct__tcp__stream__}{\-\_\-tcp\-\_\-stream\-\_\-} \hyperlink{tcpreassembly_8h_ae9e45493ae1aac1f81792ef0ee830eee}{ntoh\-\_\-tcp\-\_\-stream\-\_\-t}
+\begin{DoxyCompactList}\small\item\em connection data \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct__tcp__stream__}{\-\_\-tcp\-\_\-stream\-\_\-} $\ast$ \hyperlink{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{pntoh\-\_\-tcp\-\_\-stream\-\_\-t}
+\item 
+typedef \hyperlink{structhtable__t}{htable\-\_\-t} \hyperlink{tcpreassembly_8h_aee0ba6baf63ea8ae7cd6a836e9589b8d}{tcprs\-\_\-streams\-\_\-table\-\_\-t}
+\item 
+typedef \hyperlink{common_8h_afb6650ea3c7d2a821a4f503991dc6e6c}{phtable\-\_\-t} \hyperlink{tcpreassembly_8h_ae455978c868a3bf1a0708d96932f956a}{ptcprs\-\_\-streams\-\_\-table\-\_\-t}
+\item 
+typedef struct \hyperlink{struct__tcp__session__}{\-\_\-tcp\-\_\-session\-\_\-} \hyperlink{tcpreassembly_8h_ada94ff4a876c796b7b995dd39b89b5c8}{ntoh\-\_\-tcp\-\_\-session\-\_\-t}
+\begin{DoxyCompactList}\small\item\em T\-C\-P session data. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct__tcp__session__}{\-\_\-tcp\-\_\-session\-\_\-} $\ast$ \hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t}
+\item 
+typedef void($\ast$ \hyperlink{tcpreassembly_8h_a58837491b70c52fdbc78759ad8f6ae7b}{pntoh\-\_\-tcp\-\_\-callback\-\_\-t} )(\hyperlink{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{pntoh\-\_\-tcp\-\_\-stream\-\_\-t}, \hyperlink{tcpreassembly_8h_a90b00598acf82219ee093cd08ae60476}{pntoh\-\_\-tcp\-\_\-peer\-\_\-t}, \hyperlink{tcpreassembly_8h_a90b00598acf82219ee093cd08ae60476}{pntoh\-\_\-tcp\-\_\-peer\-\_\-t}, \hyperlink{tcpreassembly_8h_a1f60f4065e8694dbf82c9896925295b3}{pntoh\-\_\-tcp\-\_\-segment\-\_\-t}, int, int)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191}{\-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-} \{ \\*
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a7e4873ea25c33995dee994737e8019c4}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-D} = 0, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a38bb0b0a8398d514402537b7abe613c5}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-I\-S\-T\-E\-N}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191ac3880ea4d7987fe2872f758fe25f64e1}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-S\-E\-N\-T}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a68afde5b306a719b7c1568e28dc9c135}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-R\-C\-V}, 
+\\*
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a0a68ea1b12088598a5d1ce72b1a07b15}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191aade958d103a364b97c62c994ea71d2ce}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-I\-N\-G}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a979c2f90b0a3cd0ece1f92b0599486e6}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-W\-A\-I\-T}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a07d8797998e9c52da8f4788c2ffa40be}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T1}, 
+\\*
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a4056351bb2da1645a75b3d6233e19dbe}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T2}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a5cb995554981800af85bfb2aab43d8d4}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-A\-S\-T\-A\-C\-K}, 
+\hyperlink{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a4d59743253648010ecf9cde2f7fa1a95}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T}
+ \}
+\begin{DoxyCompactList}\small\item\em connection status \end{DoxyCompactList}\item 
+enum \hyperlink{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feab}{tcprs\-\_\-who\-\_\-closed} \{ \hyperlink{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba9e930aa27963b250757e36a8cb6793e9}{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-U\-N\-K\-N\-O\-W\-N} = 0, 
+\hyperlink{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba4de6f84ab50682c8fa483c0f5f93277f}{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}, 
+\hyperlink{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba6c78f2808c442bd8e50f8d695015a81c}{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}
+ \}
+\begin{DoxyCompactList}\small\item\em who closed the connection? \end{DoxyCompactList}\item 
+enum \hyperlink{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784}{tcprs\-\_\-who\-\_\-sent} \{ \hyperlink{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784aad46deb804c662246c6069553d2bb92c}{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T} = 0, 
+\hyperlink{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784aed93dbe34c1e7f67f32471327f14dab5}{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}
+ \}
+\begin{DoxyCompactList}\small\item\em who send the segment \end{DoxyCompactList}\item 
+enum \hyperlink{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8f}{check\-\_\-timeout} \{ \\*
+\hyperlink{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fabb264da3e49c865929fd3f8abd97b545}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T} = (1 $<$$<$ 0), 
+\hyperlink{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa17d87efe9b2d6bddec3e0e4f8dd9d423}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T} = (1 $<$$<$ 1), 
+\hyperlink{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa9c3d2e6ab3da7d5504ef8775e1f3404b}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T} = (1 $<$$<$ 2), 
+\hyperlink{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8faf7446a61b045f87bc98449f1ffd014e0}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T} = (1 $<$$<$ 3), 
+\\*
+\hyperlink{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa92790a50ba6240bddf97c6a2ee5600aa}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T} = (1 $<$$<$ 4)
+ \}
+\begin{DoxyCompactList}\small\item\em Control switch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tcpreassembly_8h_af5367c35ffb190e722fb47047c270412}{ntoh\-\_\-tcp\-\_\-init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes all needed resources for T\-C\-P reassembly. \end{DoxyCompactList}\item 
+void \hyperlink{tcpreassembly_8h_acc49e434765b814f51b6dabe2674685e}{ntoh\-\_\-tcp\-\_\-exit} (void)
+\begin{DoxyCompactList}\small\item\em Releases all resources used by T\-C\-P reassembly. \end{DoxyCompactList}\item 
+\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} \hyperlink{tcpreassembly_8h_a007236be3783a3fa61bcf43e769f2c34}{ntoh\-\_\-tcp\-\_\-new\-\_\-session} (unsigned int max\-\_\-streams, unsigned int max\-\_\-timewait, unsigned int $\ast$error)
+\begin{DoxyCompactList}\small\item\em Creates a new session with independent parameters to reassemble T\-C\-P segments. \end{DoxyCompactList}\item 
+void \hyperlink{tcpreassembly_8h_af6aa18e3caef776537fb390ee8ef09a5}{ntoh\-\_\-tcp\-\_\-free\-\_\-session} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session)
+\begin{DoxyCompactList}\small\item\em Releases all resources used by a session. \end{DoxyCompactList}\item 
+void \hyperlink{tcpreassembly_8h_a380320ed3a08440a731528a2fca9d925}{ntoh\-\_\-tcp\-\_\-free\-\_\-stream} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session, \hyperlink{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{pntoh\-\_\-tcp\-\_\-stream\-\_\-t} $\ast$stream, int reason, int extra)
+\begin{DoxyCompactList}\small\item\em Frees a given T\-C\-P stream. \end{DoxyCompactList}\item 
+\hyperlink{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{pntoh\-\_\-tcp\-\_\-stream\-\_\-t} \hyperlink{tcpreassembly_8h_a66167ef04aa0a5629170792e177b50a5}{ntoh\-\_\-tcp\-\_\-find\-\_\-stream} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session, \hyperlink{tcpreassembly_8h_ad6e28a6b9151048e9f293920c2a41b72}{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} tuple5)
+\begin{DoxyCompactList}\small\item\em Finds a T\-C\-P stream. \end{DoxyCompactList}\item 
+\hyperlink{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{pntoh\-\_\-tcp\-\_\-stream\-\_\-t} \hyperlink{tcpreassembly_8h_a1561a25fa39da052bb3ac711d95522ca}{ntoh\-\_\-tcp\-\_\-new\-\_\-stream} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session, \hyperlink{tcpreassembly_8h_ad6e28a6b9151048e9f293920c2a41b72}{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} tuple5, \hyperlink{tcpreassembly_8h_a58837491b70c52fdbc78759ad8f6ae7b}{pntoh\-\_\-tcp\-\_\-callback\-\_\-t} function, void $\ast$udata, unsigned int $\ast$error, unsigned short enable\-\_\-check\-\_\-timeout, unsigned short enable\-\_\-check\-\_\-nowindow)
+\begin{DoxyCompactList}\small\item\em Adds a new T\-C\-P stream. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{tcpreassembly_8h_a6a721a5b23eaed34b3cebe9f893de324}{ntoh\-\_\-tcp\-\_\-count\-\_\-streams} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session)
+\begin{DoxyCompactList}\small\item\em Returns the total count of T\-C\-P streams stored in the global hash table. \end{DoxyCompactList}\item 
+int \hyperlink{tcpreassembly_8h_ad0cae1675a30326523dcb1b4d11bd379}{ntoh\-\_\-tcp\-\_\-add\-\_\-segment} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session, \hyperlink{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{pntoh\-\_\-tcp\-\_\-stream\-\_\-t} stream, struct ip $\ast$ip, size\-\_\-t len, void $\ast$udata)
+\begin{DoxyCompactList}\small\item\em Adds a new segment to a given stream. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{tcpreassembly_8h_a4491aa15b4d0377e25e363c6bb253e43}{ntoh\-\_\-tcp\-\_\-get\-\_\-status} (unsigned int status)
+\begin{DoxyCompactList}\small\item\em Get the status string of a stream/peer. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{tcpreassembly_8h_a34e4afc04d7b4306cc2aa90961c8933e}{ntoh\-\_\-tcp\-\_\-get\-\_\-size} (\hyperlink{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{pntoh\-\_\-tcp\-\_\-session\-\_\-t} session)
+\begin{DoxyCompactList}\small\item\em Gets the size of the sessions table (max allowed streams) \end{DoxyCompactList}\item 
+unsigned int \hyperlink{tcpreassembly_8h_a3f8d6ab2554efa49da3e85fe579674ba}{ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5} (struct ip $\ast$ip, struct tcphdr $\ast$tcp, \hyperlink{tcpreassembly_8h_ad6e28a6b9151048e9f293920c2a41b72}{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} tuple)
+\begin{DoxyCompactList}\small\item\em Gets the tuple5 of a T\-C\-P/\-I\-Pv4 stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{tcpreassembly_8h_a0e25ec3d9c374c5e6dceeb9341baf766}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D@{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}}
+\index{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D@{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}}\label{tcpreassembly_8h_a0e25ec3d9c374c5e6dceeb9341baf766}
+\hypertarget{tcpreassembly_8h_ad4038e549481187113c5534e47e520a4}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T~60}}\label{tcpreassembly_8h_ad4038e549481187113c5534e47e520a4}
+
+
+max. 
+
+idle time for established connections \hypertarget{tcpreassembly_8h_a1aea7b42ff17d7e6ef851d22c0894c7d}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T~60}}\label{tcpreassembly_8h_a1aea7b42ff17d7e6ef851d22c0894c7d}
+
+
+max. 
+
+idle time for \char`\"{}closed\char`\"{} connections \hypertarget{tcpreassembly_8h_a160418e1544e8d847cf611e2d72e5f84}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S~4096}}\label{tcpreassembly_8h_a160418e1544e8d847cf611e2d72e5f84}
+
+
+max allowed connections 
+
+\hypertarget{tcpreassembly_8h_af851947f927bce5241f7c57de437cd7e}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-S\-T\-R\-E\-A\-M\-S(
+\begin{DoxyParamCaption}
+\item[{}]{max}
+\end{DoxyParamCaption}
+)~(max$>$0?max/3\-:{\bf D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-M\-A\-X\-\_\-\-S\-T\-R\-E\-A\-M\-S}/3)}}\label{tcpreassembly_8h_af851947f927bce5241f7c57de437cd7e}
+
+
+Macro to set the default T\-I\-M\-E\-W\-A\-I\-T for new connections. 
+
+\hypertarget{tcpreassembly_8h_a18eb1dac5b9667ce2ce1b8d867da397b}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-\_\-\-R\-E\-T\-R\-I\-E\-S~5}}\label{tcpreassembly_8h_a18eb1dac5b9667ce2ce1b8d867da397b}
+
+
+max S\-Y\-N retries 
+
+\hypertarget{tcpreassembly_8h_a565a2764e26e7be15417f1bb5e23e6ee}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-A\-C\-K\-\_\-\-R\-E\-T\-R\-I\-E\-S~5}}\label{tcpreassembly_8h_a565a2764e26e7be15417f1bb5e23e6ee}
+
+
+max S\-Y\-N/\-A\-C\-K retries 
+
+\hypertarget{tcpreassembly_8h_ac41522f3f6aec6c60612bd59e50f87ee}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T~5}}\label{tcpreassembly_8h_ac41522f3f6aec6c60612bd59e50f87ee}
+
+
+A\-C\-K -\/$>$ S\-Y\-N timeout. 
+
+\hypertarget{tcpreassembly_8h_a7d96781205a92761b5f0a7cd1620b7c9}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T~5}}\label{tcpreassembly_8h_a7d96781205a92761b5f0a7cd1620b7c9}
+
+
+S\-Y\-N/\-A\-C\-K timeout. 
+
+\hypertarget{tcpreassembly_8h_a37401b8dc4091b4fff95802f4577e1ba}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T~2$\ast${\bf D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}}}\label{tcpreassembly_8h_a37401b8dc4091b4fff95802f4577e1ba}
+
+
+Default timeout for T\-I\-M\-E\-W\-A\-I\-T tcp connections. 
+
+\hypertarget{tcpreassembly_8h_a43844e2294509ffb5baf2971bec79336}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-D\-E\-L\-A\-Y~3000}}\label{tcpreassembly_8h_a43844e2294509ffb5baf2971bec79336}
+
+
+Delay to check session's streams timeout (ms) 
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{tcpreassembly_8h_aa3f9c3d7e8a394f8b2f6329d8f5a8567}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-key\-\_\-t@{ntoh\-\_\-tcp\-\_\-key\-\_\-t}}
+\index{ntoh\-\_\-tcp\-\_\-key\-\_\-t@{ntoh\-\_\-tcp\-\_\-key\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-key\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned int {\bf ntoh\-\_\-tcp\-\_\-key\-\_\-t}}}\label{tcpreassembly_8h_aa3f9c3d7e8a394f8b2f6329d8f5a8567}
+
+
+key to identify connections 
+
+\hypertarget{tcpreassembly_8h_a48372e31909b7d98df42a5a15e7058e3}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-segment\-\_\-t@{ntoh\-\_\-tcp\-\_\-segment\-\_\-t}}
+\index{ntoh\-\_\-tcp\-\_\-segment\-\_\-t@{ntoh\-\_\-tcp\-\_\-segment\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-segment\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-tcp\-\_\-segment\-\_\-}  {\bf ntoh\-\_\-tcp\-\_\-segment\-\_\-t}}}\label{tcpreassembly_8h_a48372e31909b7d98df42a5a15e7058e3}
+
+
+data sent to user-\/function 
+
+\hypertarget{tcpreassembly_8h_ada94ff4a876c796b7b995dd39b89b5c8}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-session\-\_\-t@{ntoh\-\_\-tcp\-\_\-session\-\_\-t}}
+\index{ntoh\-\_\-tcp\-\_\-session\-\_\-t@{ntoh\-\_\-tcp\-\_\-session\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-session\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-tcp\-\_\-session\-\_\-}  {\bf ntoh\-\_\-tcp\-\_\-session\-\_\-t}}}\label{tcpreassembly_8h_ada94ff4a876c796b7b995dd39b89b5c8}
+
+
+T\-C\-P session data. 
+
+\hypertarget{tcpreassembly_8h_ae9e45493ae1aac1f81792ef0ee830eee}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-stream\-\_\-t@{ntoh\-\_\-tcp\-\_\-stream\-\_\-t}}
+\index{ntoh\-\_\-tcp\-\_\-stream\-\_\-t@{ntoh\-\_\-tcp\-\_\-stream\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-stream\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-tcp\-\_\-stream\-\_\-}  {\bf ntoh\-\_\-tcp\-\_\-stream\-\_\-t}}}\label{tcpreassembly_8h_ae9e45493ae1aac1f81792ef0ee830eee}
+
+
+connection data 
+
+\hypertarget{tcpreassembly_8h_a58837491b70c52fdbc78759ad8f6ae7b}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!pntoh\-\_\-tcp\-\_\-callback\-\_\-t@{pntoh\-\_\-tcp\-\_\-callback\-\_\-t}}
+\index{pntoh\-\_\-tcp\-\_\-callback\-\_\-t@{pntoh\-\_\-tcp\-\_\-callback\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{pntoh\-\_\-tcp\-\_\-callback\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ pntoh\-\_\-tcp\-\_\-callback\-\_\-t)({\bf pntoh\-\_\-tcp\-\_\-stream\-\_\-t}, {\bf pntoh\-\_\-tcp\-\_\-peer\-\_\-t}, {\bf pntoh\-\_\-tcp\-\_\-peer\-\_\-t}, {\bf pntoh\-\_\-tcp\-\_\-segment\-\_\-t}, int, int)}}\label{tcpreassembly_8h_a58837491b70c52fdbc78759ad8f6ae7b}
+\hypertarget{tcpreassembly_8h_a90b00598acf82219ee093cd08ae60476}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!pntoh\-\_\-tcp\-\_\-peer\-\_\-t@{pntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\index{pntoh\-\_\-tcp\-\_\-peer\-\_\-t@{pntoh\-\_\-tcp\-\_\-peer\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{pntoh\-\_\-tcp\-\_\-peer\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef  struct {\bf ntoh\-\_\-tcp\-\_\-peer\-\_\-t} $\ast$ {\bf pntoh\-\_\-tcp\-\_\-peer\-\_\-t}}}\label{tcpreassembly_8h_a90b00598acf82219ee093cd08ae60476}
+\hypertarget{tcpreassembly_8h_a1f60f4065e8694dbf82c9896925295b3}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!pntoh\-\_\-tcp\-\_\-segment\-\_\-t@{pntoh\-\_\-tcp\-\_\-segment\-\_\-t}}
+\index{pntoh\-\_\-tcp\-\_\-segment\-\_\-t@{pntoh\-\_\-tcp\-\_\-segment\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{pntoh\-\_\-tcp\-\_\-segment\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-tcp\-\_\-segment\-\_\-} $\ast$ {\bf pntoh\-\_\-tcp\-\_\-segment\-\_\-t}}}\label{tcpreassembly_8h_a1f60f4065e8694dbf82c9896925295b3}
+\hypertarget{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!pntoh\-\_\-tcp\-\_\-session\-\_\-t@{pntoh\-\_\-tcp\-\_\-session\-\_\-t}}
+\index{pntoh\-\_\-tcp\-\_\-session\-\_\-t@{pntoh\-\_\-tcp\-\_\-session\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{pntoh\-\_\-tcp\-\_\-session\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-tcp\-\_\-session\-\_\-} $\ast$ {\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}}\label{tcpreassembly_8h_ad10bc380ba77e444ab1e8ce8ab983e2d}
+\hypertarget{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!pntoh\-\_\-tcp\-\_\-stream\-\_\-t@{pntoh\-\_\-tcp\-\_\-stream\-\_\-t}}
+\index{pntoh\-\_\-tcp\-\_\-stream\-\_\-t@{pntoh\-\_\-tcp\-\_\-stream\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{pntoh\-\_\-tcp\-\_\-stream\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-tcp\-\_\-stream\-\_\-} $\ast$ {\bf pntoh\-\_\-tcp\-\_\-stream\-\_\-t}}}\label{tcpreassembly_8h_a1e81ba1af0b25a459f79ef2ce3c19ac8}
+\hypertarget{tcpreassembly_8h_ad6e28a6b9151048e9f293920c2a41b72}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t@{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}}
+\index{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t@{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef  struct {\bf ntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} $\ast$ {\bf pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}}}\label{tcpreassembly_8h_ad6e28a6b9151048e9f293920c2a41b72}
+\hypertarget{tcpreassembly_8h_ae455978c868a3bf1a0708d96932f956a}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ptcprs\-\_\-streams\-\_\-table\-\_\-t@{ptcprs\-\_\-streams\-\_\-table\-\_\-t}}
+\index{ptcprs\-\_\-streams\-\_\-table\-\_\-t@{ptcprs\-\_\-streams\-\_\-table\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ptcprs\-\_\-streams\-\_\-table\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf phtable\-\_\-t} {\bf ptcprs\-\_\-streams\-\_\-table\-\_\-t}}}\label{tcpreassembly_8h_ae455978c868a3bf1a0708d96932f956a}
+\hypertarget{tcpreassembly_8h_aee0ba6baf63ea8ae7cd6a836e9589b8d}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!tcprs\-\_\-streams\-\_\-table\-\_\-t@{tcprs\-\_\-streams\-\_\-table\-\_\-t}}
+\index{tcprs\-\_\-streams\-\_\-table\-\_\-t@{tcprs\-\_\-streams\-\_\-table\-\_\-t}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{tcprs\-\_\-streams\-\_\-table\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf htable\-\_\-t} {\bf tcprs\-\_\-streams\-\_\-table\-\_\-t}}}\label{tcpreassembly_8h_aee0ba6baf63ea8ae7cd6a836e9589b8d}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!\-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-@{\-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-}}
+\index{\-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-@{\-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{\-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-\_\-ntoh\-\_\-tcp\-\_\-status\-\_\-}}}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191}
+
+
+connection status 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-D@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-D}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-D@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-D}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a7e4873ea25c33995dee994737e8019c4}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-D}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a7e4873ea25c33995dee994737e8019c4}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-I\-S\-T\-E\-N@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-I\-S\-T\-E\-N}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-I\-S\-T\-E\-N@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-I\-S\-T\-E\-N}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a38bb0b0a8398d514402537b7abe613c5}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-I\-S\-T\-E\-N}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a38bb0b0a8398d514402537b7abe613c5}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-S\-E\-N\-T@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-S\-E\-N\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-S\-E\-N\-T@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-S\-E\-N\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191ac3880ea4d7987fe2872f758fe25f64e1}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-S\-E\-N\-T}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191ac3880ea4d7987fe2872f758fe25f64e1}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-R\-C\-V@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-R\-C\-V}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-R\-C\-V@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-R\-C\-V}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a68afde5b306a719b7c1568e28dc9c135}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-S\-Y\-N\-R\-C\-V}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a68afde5b306a719b7c1568e28dc9c135}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a0a68ea1b12088598a5d1ce72b1a07b15}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a0a68ea1b12088598a5d1ce72b1a07b15}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-I\-N\-G@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-I\-N\-G}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-I\-N\-G@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-I\-N\-G}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191aade958d103a364b97c62c994ea71d2ce}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-I\-N\-G}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191aade958d103a364b97c62c994ea71d2ce}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-W\-A\-I\-T@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-W\-A\-I\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-W\-A\-I\-T@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-W\-A\-I\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a979c2f90b0a3cd0ece1f92b0599486e6}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-L\-O\-S\-E\-W\-A\-I\-T}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a979c2f90b0a3cd0ece1f92b0599486e6}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T1@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T1}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T1@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T1}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a07d8797998e9c52da8f4788c2ffa40be}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T1}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a07d8797998e9c52da8f4788c2ffa40be}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T2@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T2}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T2@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T2}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a4056351bb2da1645a75b3d6233e19dbe}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-F\-I\-N\-W\-A\-I\-T2}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a4056351bb2da1645a75b3d6233e19dbe}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-A\-S\-T\-A\-C\-K@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-A\-S\-T\-A\-C\-K}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-A\-S\-T\-A\-C\-K@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-A\-S\-T\-A\-C\-K}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a5cb995554981800af85bfb2aab43d8d4}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-A\-S\-T\-A\-C\-K}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a5cb995554981800af85bfb2aab43d8d4}
+}]\index{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T@{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a4d59743253648010ecf9cde2f7fa1a95}{N\-T\-O\-H\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T}\label{tcpreassembly_8h_ad6a3bcb9e47d8dbfbfa6338e40380191a4d59743253648010ecf9cde2f7fa1a95}
+}]\end{description}
+\end{Desc}
+\hypertarget{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8f}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!check\-\_\-timeout@{check\-\_\-timeout}}
+\index{check\-\_\-timeout@{check\-\_\-timeout}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{check\-\_\-timeout}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf check\-\_\-timeout}}}\label{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8f}
+
+
+Control switch. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fabb264da3e49c865929fd3f8abd97b545}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-S\-E\-N\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}\label{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fabb264da3e49c865929fd3f8abd97b545}
+}]\index{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa17d87efe9b2d6bddec3e0e4f8dd9d423}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-S\-Y\-N\-R\-C\-V\-\_\-\-T\-I\-M\-E\-O\-U\-T}\label{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa17d87efe9b2d6bddec3e0e4f8dd9d423}
+}]\index{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa9c3d2e6ab3da7d5504ef8775e1f3404b}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-E\-S\-T\-A\-B\-L\-I\-S\-H\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}\label{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa9c3d2e6ab3da7d5504ef8775e1f3404b}
+}]\index{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8faf7446a61b045f87bc98449f1ffd014e0}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-F\-I\-N\-W\-A\-I\-T2\-\_\-\-T\-I\-M\-E\-O\-U\-T}\label{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8faf7446a61b045f87bc98449f1ffd014e0}
+}]\index{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa92790a50ba6240bddf97c6a2ee5600aa}{N\-T\-O\-H\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-C\-P\-\_\-\-T\-I\-M\-E\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}\label{tcpreassembly_8h_af8a89affbf590715e6b4c16811f40e8fa92790a50ba6240bddf97c6a2ee5600aa}
+}]\end{description}
+\end{Desc}
+\hypertarget{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feab}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!tcprs\-\_\-who\-\_\-closed@{tcprs\-\_\-who\-\_\-closed}}
+\index{tcprs\-\_\-who\-\_\-closed@{tcprs\-\_\-who\-\_\-closed}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{tcprs\-\_\-who\-\_\-closed}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tcprs\-\_\-who\-\_\-closed}}}\label{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feab}
+
+
+who closed the connection? 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-U\-N\-K\-N\-O\-W\-N@{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-U\-N\-K\-N\-O\-W\-N}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-U\-N\-K\-N\-O\-W\-N@{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-U\-N\-K\-N\-O\-W\-N}}\item[{\em 
+\hypertarget{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba9e930aa27963b250757e36a8cb6793e9}{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-U\-N\-K\-N\-O\-W\-N}\label{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba9e930aa27963b250757e36a8cb6793e9}
+}]\index{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T@{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T@{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba4de6f84ab50682c8fa483c0f5f93277f}{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}\label{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba4de6f84ab50682c8fa483c0f5f93277f}
+}]\index{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R@{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R@{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}}\item[{\em 
+\hypertarget{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba6c78f2808c442bd8e50f8d695015a81c}{N\-T\-O\-H\-\_\-\-C\-L\-O\-S\-E\-D\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}\label{tcpreassembly_8h_a47d9f0ab9d99e820b74036bf0fb5feaba6c78f2808c442bd8e50f8d695015a81c}
+}]\end{description}
+\end{Desc}
+\hypertarget{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!tcprs\-\_\-who\-\_\-sent@{tcprs\-\_\-who\-\_\-sent}}
+\index{tcprs\-\_\-who\-\_\-sent@{tcprs\-\_\-who\-\_\-sent}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{tcprs\-\_\-who\-\_\-sent}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tcprs\-\_\-who\-\_\-sent}}}\label{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784}
+
+
+who send the segment 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T@{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T@{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}}\item[{\em 
+\hypertarget{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784aad46deb804c662246c6069553d2bb92c}{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-C\-L\-I\-E\-N\-T}\label{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784aad46deb804c662246c6069553d2bb92c}
+}]\index{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R@{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}!tcpreassembly.\-h@{tcpreassembly.\-h}}\index{tcpreassembly.\-h@{tcpreassembly.\-h}!N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R@{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}}\item[{\em 
+\hypertarget{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784aed93dbe34c1e7f67f32471327f14dab5}{N\-T\-O\-H\-\_\-\-S\-E\-N\-T\-\_\-\-B\-Y\-\_\-\-S\-E\-R\-V\-E\-R}\label{tcpreassembly_8h_aea37eda90a6d601eaa013b5fa293e784aed93dbe34c1e7f67f32471327f14dab5}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{tcpreassembly_8h_ad0cae1675a30326523dcb1b4d11bd379}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-add\-\_\-segment@{ntoh\-\_\-tcp\-\_\-add\-\_\-segment}}
+\index{ntoh\-\_\-tcp\-\_\-add\-\_\-segment@{ntoh\-\_\-tcp\-\_\-add\-\_\-segment}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-add\-\_\-segment}]{\setlength{\rightskip}{0pt plus 5cm}int ntoh\-\_\-tcp\-\_\-add\-\_\-segment (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-tcp\-\_\-stream\-\_\-t}}]{stream, }
+\item[{struct ip $\ast$}]{ip, }
+\item[{size\-\_\-t}]{len, }
+\item[{void $\ast$}]{udata}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_ad0cae1675a30326523dcb1b4d11bd379}
+
+
+Adds a new segment to a given stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & T\-C\-P Session \\
+\hline
+{\em stream} & Pointer to the stream \\
+\hline
+{\em ip\-\_\-hdr} & I\-P Header \\
+\hline
+{\em len} & Total length of this segment \\
+\hline
+{\em udata} & Used data associated with this segment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\-T\-O\-H\-\_\-\-O\-K on success or the corresponding error code
+\end{DoxyReturn}
+Adds a new segment to a given stream. \hypertarget{tcpreassembly_8h_a6a721a5b23eaed34b3cebe9f893de324}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-count\-\_\-streams@{ntoh\-\_\-tcp\-\_\-count\-\_\-streams}}
+\index{ntoh\-\_\-tcp\-\_\-count\-\_\-streams@{ntoh\-\_\-tcp\-\_\-count\-\_\-streams}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-count\-\_\-streams}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ntoh\-\_\-tcp\-\_\-count\-\_\-streams (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a6a721a5b23eaed34b3cebe9f893de324}
+
+
+Returns the total count of T\-C\-P streams stored in the global hash table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & T\-C\-P Session \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total count of stored streams
+\end{DoxyReturn}
+Returns the total count of T\-C\-P streams stored in the global hash table. \hypertarget{tcpreassembly_8h_acc49e434765b814f51b6dabe2674685e}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-exit@{ntoh\-\_\-tcp\-\_\-exit}}
+\index{ntoh\-\_\-tcp\-\_\-exit@{ntoh\-\_\-tcp\-\_\-exit}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-exit}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-tcp\-\_\-exit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_acc49e434765b814f51b6dabe2674685e}
+
+
+Releases all resources used by T\-C\-P reassembly. 
+
+Releases all resources used by T\-C\-P reassembly. 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{tcpreassembly_8h_acc49e434765b814f51b6dabe2674685e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{tcpreassembly_8h_acc49e434765b814f51b6dabe2674685e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{tcpreassembly_8h_a66167ef04aa0a5629170792e177b50a5}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-find\-\_\-stream@{ntoh\-\_\-tcp\-\_\-find\-\_\-stream}}
+\index{ntoh\-\_\-tcp\-\_\-find\-\_\-stream@{ntoh\-\_\-tcp\-\_\-find\-\_\-stream}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-find\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-tcp\-\_\-stream\-\_\-t} ntoh\-\_\-tcp\-\_\-find\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}}]{tuple5}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a66167ef04aa0a5629170792e177b50a5}
+
+
+Finds a T\-C\-P stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & T\-C\-P Session \\
+\hline
+{\em tuple5} & Stream information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the stream on success or 0 when fails
+\end{DoxyReturn}
+Finds a T\-C\-P stream. \hypertarget{tcpreassembly_8h_af6aa18e3caef776537fb390ee8ef09a5}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-free\-\_\-session@{ntoh\-\_\-tcp\-\_\-free\-\_\-session}}
+\index{ntoh\-\_\-tcp\-\_\-free\-\_\-session@{ntoh\-\_\-tcp\-\_\-free\-\_\-session}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-free\-\_\-session}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-tcp\-\_\-free\-\_\-session (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_af6aa18e3caef776537fb390ee8ef09a5}
+
+
+Releases all resources used by a session. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & Session to be released\\
+\hline
+\end{DoxyParams}
+Releases all resources used by a session. \hypertarget{tcpreassembly_8h_a380320ed3a08440a731528a2fca9d925}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-free\-\_\-stream@{ntoh\-\_\-tcp\-\_\-free\-\_\-stream}}
+\index{ntoh\-\_\-tcp\-\_\-free\-\_\-stream@{ntoh\-\_\-tcp\-\_\-free\-\_\-stream}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-free\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-tcp\-\_\-free\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-tcp\-\_\-stream\-\_\-t} $\ast$}]{stream, }
+\item[{int}]{reason, }
+\item[{int}]{extra}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a380320ed3a08440a731528a2fca9d925}
+
+
+Frees a given T\-C\-P stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & Pointer to the session \\
+\hline
+{\em stream} & Pointer to the stream \\
+\hline
+{\em reason} & Value to be sent to the user defined function \\
+\hline
+{\em extra} & Value to be sent to the user defined function\\
+\hline
+\end{DoxyParams}
+Frees a given T\-C\-P stream. \hypertarget{tcpreassembly_8h_a34e4afc04d7b4306cc2aa90961c8933e}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-get\-\_\-size@{ntoh\-\_\-tcp\-\_\-get\-\_\-size}}
+\index{ntoh\-\_\-tcp\-\_\-get\-\_\-size@{ntoh\-\_\-tcp\-\_\-get\-\_\-size}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-get\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ntoh\-\_\-tcp\-\_\-get\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a34e4afc04d7b4306cc2aa90961c8933e}
+
+
+Gets the size of the sessions table (max allowed streams) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & T\-C\-P Session \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The max. amount of T\-C\-P streams that can be stored , or zero on error
+\end{DoxyReturn}
+Gets the size of the sessions table (max allowed streams) \hypertarget{tcpreassembly_8h_a4491aa15b4d0377e25e363c6bb253e43}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-get\-\_\-status@{ntoh\-\_\-tcp\-\_\-get\-\_\-status}}
+\index{ntoh\-\_\-tcp\-\_\-get\-\_\-status@{ntoh\-\_\-tcp\-\_\-get\-\_\-status}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-get\-\_\-status}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ ntoh\-\_\-tcp\-\_\-get\-\_\-status (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{status}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a4491aa15b4d0377e25e363c6bb253e43}
+
+
+Get the status string of a stream/peer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & Status id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status string on success or 0 when fails
+\end{DoxyReturn}
+Get the status string of a stream/peer. \hypertarget{tcpreassembly_8h_a3f8d6ab2554efa49da3e85fe579674ba}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5@{ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5}}
+\index{ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5@{ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ntoh\-\_\-tcp\-\_\-get\-\_\-tuple5 (
+\begin{DoxyParamCaption}
+\item[{struct ip $\ast$}]{ip, }
+\item[{struct tcphdr $\ast$}]{tcp, }
+\item[{{\bf pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}}]{tuple}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a3f8d6ab2554efa49da3e85fe579674ba}
+
+
+Gets the tuple5 of a T\-C\-P/\-I\-Pv4 stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & Pointer to the I\-Pv4 header \\
+\hline
+{\em tcp} & Pointer to the T\-C\-P header \\
+\hline
+{\em tuple} & Pointer to the output tuple5 struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\-T\-O\-H\-\_\-\-O\-K on success or the corresponding error code
+\end{DoxyReturn}
+Gets the tuple5 of a T\-C\-P/\-I\-Pv4 stream. \hypertarget{tcpreassembly_8h_af5367c35ffb190e722fb47047c270412}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-init@{ntoh\-\_\-tcp\-\_\-init}}
+\index{ntoh\-\_\-tcp\-\_\-init@{ntoh\-\_\-tcp\-\_\-init}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-tcp\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_af5367c35ffb190e722fb47047c270412}
+
+
+Initializes all needed resources for T\-C\-P reassembly. 
+
+Initializes all needed resources for T\-C\-P reassembly. 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{tcpreassembly_8h_af5367c35ffb190e722fb47047c270412_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{tcpreassembly_8h_af5367c35ffb190e722fb47047c270412_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{tcpreassembly_8h_a007236be3783a3fa61bcf43e769f2c34}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-new\-\_\-session@{ntoh\-\_\-tcp\-\_\-new\-\_\-session}}
+\index{ntoh\-\_\-tcp\-\_\-new\-\_\-session@{ntoh\-\_\-tcp\-\_\-new\-\_\-session}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-new\-\_\-session}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t} ntoh\-\_\-tcp\-\_\-new\-\_\-session (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max\-\_\-streams, }
+\item[{unsigned int}]{max\-\_\-timewait, }
+\item[{unsigned int $\ast$}]{error}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a007236be3783a3fa61bcf43e769f2c34}
+
+
+Creates a new session with independent parameters to reassemble T\-C\-P segments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-\_\-streams} & Max number of allowed streams in this session \\
+\hline
+{\em max\-\_\-timewait} & Max idle time fo T\-I\-M\-E-\/\-W\-A\-I\-T connections (global) \\
+\hline
+{\em error} & Returned error code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new session or 0 when it fails
+\end{DoxyReturn}
+Creates a new session with independent parameters to reassemble T\-C\-P segments. 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tcpreassembly_8h_a007236be3783a3fa61bcf43e769f2c34_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{tcpreassembly_8h_a1561a25fa39da052bb3ac711d95522ca}{\index{tcpreassembly.\-h@{tcpreassembly.\-h}!ntoh\-\_\-tcp\-\_\-new\-\_\-stream@{ntoh\-\_\-tcp\-\_\-new\-\_\-stream}}
+\index{ntoh\-\_\-tcp\-\_\-new\-\_\-stream@{ntoh\-\_\-tcp\-\_\-new\-\_\-stream}!tcpreassembly.h@{tcpreassembly.\-h}}
+\subsubsection[{ntoh\-\_\-tcp\-\_\-new\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-tcp\-\_\-stream\-\_\-t} ntoh\-\_\-tcp\-\_\-new\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-tcp\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-tcp\-\_\-tuple5\-\_\-t}}]{tuple5, }
+\item[{{\bf pntoh\-\_\-tcp\-\_\-callback\-\_\-t}}]{function, }
+\item[{void $\ast$}]{udata, }
+\item[{unsigned int $\ast$}]{error, }
+\item[{unsigned short}]{enable\-\_\-check\-\_\-timeout, }
+\item[{unsigned short}]{enable\-\_\-check\-\_\-nowindow}
+\end{DoxyParamCaption}
+)}}\label{tcpreassembly_8h_a1561a25fa39da052bb3ac711d95522ca}
+
+
+Adds a new T\-C\-P stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & T\-C\-P Session \\
+\hline
+{\em tuple5} & Stream information \\
+\hline
+{\em function} & User defined function to receive the segments of this stream \\
+\hline
+{\em udata} & User-\/defined data to be linked to the new stream \\
+\hline
+{\em error} & Returned error code \\
+\hline
+{\em enable\-\_\-tcp\-\_\-established\-\_\-timeout} & enables/disables idle time verification for established connections // \-: di3online -\/ \href{https://github.com/di3online}{\tt https\-://github.\-com/di3online} \\
+\hline
+{\em enable\-\_\-check\-\_\-nowindow} & enables/disables T\-C\-P Window verification // \-: di3online -\/ \href{https://github.com/di3online}{\tt https\-://github.\-com/di3online} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new stream on success or 0 when fails
+\end{DoxyReturn}
+Adds a new T\-C\-P stream. 

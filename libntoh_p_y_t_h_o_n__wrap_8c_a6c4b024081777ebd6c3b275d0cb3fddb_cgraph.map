@@ -1,0 +1,20 @@
+<map id="SWIG_Python_NewPointerObj" name="SWIG_Python_NewPointerObj">
+<area shape="rect" id="node2" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a695030dbc62bde212c7b7a9169c6eee9" title="SWIG_Py_Void" alt="" coords="329,309,439,336"/>
+<area shape="rect" id="node3" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#adaf049b6445afcfd0890cabe0d5539d4" title="SwigPyObject_New" alt="" coords="313,360,455,387"/>
+<area shape="rect" id="node17" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a73eb27cce2019a9dda04cb97b417bf1b" title="SWIG_Python_NewShadowInstance" alt="" coords="262,411,506,437"/>
+<area shape="rect" id="node4" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a70268be3151a2c800628b561be2b3d6d" title="SwigPyObject_type" alt="" coords="555,259,698,285"/>
+<area shape="rect" id="node5" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#aea7d4126c1b77d06d8fcdf22619e9d77" title="SwigPyObject_TypeOnce" alt="" coords="747,208,922,235"/>
+<area shape="rect" id="node6" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#abc24d5684dfe838e99fc155a38160d84" title="SwigPyObject_long" alt="" coords="1461,183,1603,209"/>
+<area shape="rect" id="node7" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#ac19d035c2f2617b773fb7b3bea5a26b3" title="SwigPyObject_oct" alt="" coords="1001,259,1135,285"/>
+<area shape="rect" id="node10" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a655c2dc99f0ce059357b97600a9d274a" title="SwigPyObject_hex" alt="" coords="999,208,1137,235"/>
+<area shape="rect" id="node11" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a31a09386e839d2080e2f56602c011263" title="SwigPyObject_dealloc" alt="" coords="989,360,1147,387"/>
+<area shape="rect" id="node13" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a68eddc0684157ef121380451acbbfa1f" title="SwigPyObject_getattr" alt="" coords="989,5,1147,32"/>
+<area shape="rect" id="node14" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a72434475ffb4b712774fb65344cf0292" title="SwigPyObject_compare" alt="" coords="1213,132,1384,159"/>
+<area shape="rect" id="node15" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a72e362e1099bd1b9a1d124c11a101a81" title="SwigPyObject_repr" alt="" coords="998,309,1138,336"/>
+<area shape="rect" id="node16" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#ae977913145e8a243228c8e90fbe5f2ca" title="SwigPyObject_richcompare" alt="" coords="971,157,1165,184"/>
+<area shape="rect" id="node8" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a6d2977b4ede610f6c7ef7fcad053237b" title="SwigPyObject_format" alt="" coords="1220,233,1377,260"/>
+<area shape="rect" id="node9" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a0ba3b72d0eb29ff47379e6e77b21d78a" title="SWIG_Python_str_FromChar" alt="" coords="1433,284,1631,311"/>
+<area shape="rect" id="node12" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a3f38ea686cb3f85bf6a15b08416f2684" title="SWIG_TypePrettyName" alt="" coords="1215,335,1382,361"/>
+<area shape="rect" id="node18" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a6af4e531324a053514434bbdeb0c3b8b" title="SWIG_This" alt="" coords="583,411,670,437"/>
+<area shape="rect" id="node19" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#ab6b9406572a75bad483f518bcfcdfd9a" title="_SWIG_This" alt="" coords="787,411,882,437"/>
+</map>

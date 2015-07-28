@@ -1,0 +1,170 @@
+\hypertarget{libntoh_8c}{\section{libntoh.\-c File Reference}
+\label{libntoh_8c}\index{libntoh.\-c@{libntoh.\-c}}
+}
+{\ttfamily \#include $<$libntoh.\-h$>$}\\*
+Include dependency graph for libntoh.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libntoh_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{libntoh_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}{V\-E\-R\-S\-I\-O\-N}~\char`\"{}0.\-4a\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{libntoh_8c_af72b9fe267b5d975a5b6a21be5a9c707}{ntoh\-\_\-version} (void)
+\begin{DoxyCompactList}\small\item\em Header files. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{libntoh_8c_a978bf8b97f01cc1b13f6153ba04ee119}{ntoh\-\_\-get\-\_\-retval\-\_\-desc} (int val)
+\begin{DoxyCompactList}\small\item\em Returns the description string of ntoh\-\_\-add\-\_\-tcpsegment and ntoh\-\_\-add\-\_\-ipv4fragment. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{libntoh_8c_a1ddfe383d7953e99ffc72e98e382aed4}{ntoh\-\_\-get\-\_\-reason} (unsigned int val)
+\begin{DoxyCompactList}\small\item\em Returns the description string about why a segment/fragment has been sent to the user. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{libntoh_8c_a96a0b7c4efcf9e0486e7c00f0c7da3ff}{ntoh\-\_\-get\-\_\-errdesc} (unsigned int val)
+\begin{DoxyCompactList}\small\item\em Returns the description of an error. \end{DoxyCompactList}\item 
+void \hyperlink{libntoh_8c_aaa3a4b07da6cdba18edd03f6f0725931}{ntoh\-\_\-init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the library (T\-C\-P and I\-Pv4) \end{DoxyCompactList}\item 
+void \hyperlink{libntoh_8c_a7502f04d4ef04536d4ea21541c59b6f3}{ntoh\-\_\-exit} (void)
+\begin{DoxyCompactList}\small\item\em Releases all resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{libntoh_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}{\index{libntoh.\-c@{libntoh.\-c}!V\-E\-R\-S\-I\-O\-N@{V\-E\-R\-S\-I\-O\-N}}
+\index{V\-E\-R\-S\-I\-O\-N@{V\-E\-R\-S\-I\-O\-N}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\-E\-R\-S\-I\-O\-N~\char`\"{}0.\-4a\char`\"{}}}\label{libntoh_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}
+
+
+\subsection{Function Documentation}
+\hypertarget{libntoh_8c_a7502f04d4ef04536d4ea21541c59b6f3}{\index{libntoh.\-c@{libntoh.\-c}!ntoh\-\_\-exit@{ntoh\-\_\-exit}}
+\index{ntoh\-\_\-exit@{ntoh\-\_\-exit}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{ntoh\-\_\-exit}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-exit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{libntoh_8c_a7502f04d4ef04536d4ea21541c59b6f3}
+
+
+Releases all resources. 
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{libntoh_8c_a7502f04d4ef04536d4ea21541c59b6f3_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{libntoh_8c_a96a0b7c4efcf9e0486e7c00f0c7da3ff}{\index{libntoh.\-c@{libntoh.\-c}!ntoh\-\_\-get\-\_\-errdesc@{ntoh\-\_\-get\-\_\-errdesc}}
+\index{ntoh\-\_\-get\-\_\-errdesc@{ntoh\-\_\-get\-\_\-errdesc}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{ntoh\-\_\-get\-\_\-errdesc}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ ntoh\-\_\-get\-\_\-errdesc (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{val}
+\end{DoxyParamCaption}
+)}}\label{libntoh_8c_a96a0b7c4efcf9e0486e7c00f0c7da3ff}
+
+
+Returns the description of an error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Error code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Description string or 0 if val is not found 
+\end{DoxyReturn}
+\hypertarget{libntoh_8c_a1ddfe383d7953e99ffc72e98e382aed4}{\index{libntoh.\-c@{libntoh.\-c}!ntoh\-\_\-get\-\_\-reason@{ntoh\-\_\-get\-\_\-reason}}
+\index{ntoh\-\_\-get\-\_\-reason@{ntoh\-\_\-get\-\_\-reason}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{ntoh\-\_\-get\-\_\-reason}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ ntoh\-\_\-get\-\_\-reason (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{val}
+\end{DoxyParamCaption}
+)}}\label{libntoh_8c_a1ddfe383d7953e99ffc72e98e382aed4}
+
+
+Returns the description string about why a segment/fragment has been sent to the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Description string or 0 if val is not found 
+\end{DoxyReturn}
+\hypertarget{libntoh_8c_a978bf8b97f01cc1b13f6153ba04ee119}{\index{libntoh.\-c@{libntoh.\-c}!ntoh\-\_\-get\-\_\-retval\-\_\-desc@{ntoh\-\_\-get\-\_\-retval\-\_\-desc}}
+\index{ntoh\-\_\-get\-\_\-retval\-\_\-desc@{ntoh\-\_\-get\-\_\-retval\-\_\-desc}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{ntoh\-\_\-get\-\_\-retval\-\_\-desc}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ ntoh\-\_\-get\-\_\-retval\-\_\-desc (
+\begin{DoxyParamCaption}
+\item[{int}]{val}
+\end{DoxyParamCaption}
+)}}\label{libntoh_8c_a978bf8b97f01cc1b13f6153ba04ee119}
+
+
+Returns the description string of ntoh\-\_\-add\-\_\-tcpsegment and ntoh\-\_\-add\-\_\-ipv4fragment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value returned by those functions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Description string or 0 if val is not found 
+\end{DoxyReturn}
+\hypertarget{libntoh_8c_aaa3a4b07da6cdba18edd03f6f0725931}{\index{libntoh.\-c@{libntoh.\-c}!ntoh\-\_\-init@{ntoh\-\_\-init}}
+\index{ntoh\-\_\-init@{ntoh\-\_\-init}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{ntoh\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{libntoh_8c_aaa3a4b07da6cdba18edd03f6f0725931}
+
+
+Initializes the library (T\-C\-P and I\-Pv4) 
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{libntoh_8c_aaa3a4b07da6cdba18edd03f6f0725931_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{libntoh_8c_af72b9fe267b5d975a5b6a21be5a9c707}{\index{libntoh.\-c@{libntoh.\-c}!ntoh\-\_\-version@{ntoh\-\_\-version}}
+\index{ntoh\-\_\-version@{ntoh\-\_\-version}!libntoh.c@{libntoh.\-c}}
+\subsubsection[{ntoh\-\_\-version}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ ntoh\-\_\-version (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{libntoh_8c_af72b9fe267b5d975a5b6a21be5a9c707}
+
+
+Header files. 
+
+Returns library version \begin{DoxyReturn}{Returns}
+The version of the library 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{libntoh_8c_af72b9fe267b5d975a5b6a21be5a9c707_cgraph}
+\end{center}
+\end{figure}
+
+

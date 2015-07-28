@@ -1,0 +1,12 @@
+<map id="SWIG_From_unsigned_SS_short" name="SWIG_From_unsigned_SS_short">
+<area shape="rect" id="node2" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a5f3bcf23d1fe3b8104c316dc5d4e2a38" title="_wrap_ntoh_ipv4_tuple4\l_t_id_get" alt="" coords="238,5,413,46"/>
+<area shape="rect" id="node3" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a541e56af2685770c33a72bc4b285e268" title="_wrap_ntoh_tcp_tuple5\l_t_sport_get" alt="" coords="241,70,410,111"/>
+<area shape="rect" id="node4" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a94a9fd459811f0d5a7d06bfdff42d036" title="_wrap_ntoh_tcp_tuple5\l_t_dport_get" alt="" coords="241,135,410,177"/>
+<area shape="rect" id="node5" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#ae9504c5b5d7fd32d283c4b63e41ce139" title="_wrap_ntoh_tcp_tuple5\l_t_protocol_get" alt="" coords="241,201,410,242"/>
+<area shape="rect" id="node6" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#afcd709fbc436c9a2f057d14fcf517dab" title="_wrap_ntoh_tcp_segment\l_t_origin_get" alt="" coords="232,266,419,307"/>
+<area shape="rect" id="node7" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a03687cec993e3d371989a5a1e6f07982" title="_wrap_ntoh_tcp_peer\l_t_port_get" alt="" coords="246,331,405,373"/>
+<area shape="rect" id="node8" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#aef0dead8c853da89e7646398dbbf4c5e" title="_wrap_ntoh_tcp_peer\l_t_receive_get" alt="" coords="246,397,405,438"/>
+<area shape="rect" id="node9" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#a7129c20aabde8e9d11b8073203f33b3c" title="_wrap_ntoh_tcp_stream\l_t_closedby_get" alt="" coords="238,462,413,503"/>
+<area shape="rect" id="node10" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#ad0c363bec21beaaef43a3e6cc2cb8727" title="_wrap_ntoh_tcp_stream\l_t_enable_check_timeout_get" alt="" coords="219,527,432,569"/>
+<area shape="rect" id="node11" href="$libntoh_p_y_t_h_o_n__wrap_8c.html#af4bec35021c357e8fbd7c6a0b66e7f81" title="_wrap_ntoh_tcp_stream\l_t_enable_check_nowindow_get" alt="" coords="213,593,437,634"/>
+</map>

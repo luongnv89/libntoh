@@ -1,0 +1,78 @@
+\hypertarget{struct__ipv6__session__}{\section{\-\_\-ipv6\-\_\-session\-\_\- Struct Reference}
+\label{struct__ipv6__session__}\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}}
+}
+
+
+Structure to store global parameters.  
+
+
+
+
+{\ttfamily \#include $<$ipv6defrag.\-h$>$}
+
+
+
+Collaboration diagram for \-\_\-ipv6\-\_\-session\-\_\-\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{struct__ipv6__session____coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__ipv6__session__}{\-\_\-ipv6\-\_\-session\-\_\-} $\ast$ \hyperlink{struct__ipv6__session___ac6d0686c91caf00b0b9eaefd9ec5bfcd}{next}
+\item 
+sem\-\_\-t \hyperlink{struct__ipv6__session___aba31d11fb16b2f989c42f6433365649e}{max\-\_\-flows}
+\begin{DoxyCompactList}\small\item\em max. number of I\-P flows \end{DoxyCompactList}\item 
+sem\-\_\-t \hyperlink{struct__ipv6__session___a122dd84b8082b78785803252948a6ad0}{max\-\_\-fragments}
+\item 
+\hyperlink{ipv6defrag_8h_aa864213ee9a224d009da94990b5ba1d7}{pipv6\-\_\-flows\-\_\-table\-\_\-t} \hyperlink{struct__ipv6__session___aecc3227daff3b4522862be5c7d14a9a5}{flows}
+\begin{DoxyCompactList}\small\item\em hash table to store I\-P flows \end{DoxyCompactList}\item 
+pthread\-\_\-t \hyperlink{struct__ipv6__session___ab10186c154259d2b4ed2d25b7e23ed17}{t\-I\-D}
+\begin{DoxyCompactList}\small\item\em connection tables related \end{DoxyCompactList}\item 
+\hyperlink{structntoh__lock__t}{ntoh\-\_\-lock\-\_\-t} \hyperlink{struct__ipv6__session___aad15823e4f2835531e6a02321cd53f7e}{lock}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure to store global parameters. 
+
+\subsection{Field Documentation}
+\hypertarget{struct__ipv6__session___aecc3227daff3b4522862be5c7d14a9a5}{\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}!flows@{flows}}
+\index{flows@{flows}!_ipv6_session_@{\-\_\-ipv6\-\_\-session\-\_\-}}
+\subsubsection[{flows}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pipv6\-\_\-flows\-\_\-table\-\_\-t} flows}}\label{struct__ipv6__session___aecc3227daff3b4522862be5c7d14a9a5}
+
+
+hash table to store I\-P flows 
+
+\hypertarget{struct__ipv6__session___aad15823e4f2835531e6a02321cd53f7e}{\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}!lock@{lock}}
+\index{lock@{lock}!_ipv6_session_@{\-\_\-ipv6\-\_\-session\-\_\-}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-lock\-\_\-t} lock}}\label{struct__ipv6__session___aad15823e4f2835531e6a02321cd53f7e}
+\hypertarget{struct__ipv6__session___aba31d11fb16b2f989c42f6433365649e}{\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}!max\-\_\-flows@{max\-\_\-flows}}
+\index{max\-\_\-flows@{max\-\_\-flows}!_ipv6_session_@{\-\_\-ipv6\-\_\-session\-\_\-}}
+\subsubsection[{max\-\_\-flows}]{\setlength{\rightskip}{0pt plus 5cm}sem\-\_\-t max\-\_\-flows}}\label{struct__ipv6__session___aba31d11fb16b2f989c42f6433365649e}
+
+
+max. number of I\-P flows 
+
+\hypertarget{struct__ipv6__session___a122dd84b8082b78785803252948a6ad0}{\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}!max\-\_\-fragments@{max\-\_\-fragments}}
+\index{max\-\_\-fragments@{max\-\_\-fragments}!_ipv6_session_@{\-\_\-ipv6\-\_\-session\-\_\-}}
+\subsubsection[{max\-\_\-fragments}]{\setlength{\rightskip}{0pt plus 5cm}sem\-\_\-t max\-\_\-fragments}}\label{struct__ipv6__session___a122dd84b8082b78785803252948a6ad0}
+\hypertarget{struct__ipv6__session___ac6d0686c91caf00b0b9eaefd9ec5bfcd}{\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}!next@{next}}
+\index{next@{next}!_ipv6_session_@{\-\_\-ipv6\-\_\-session\-\_\-}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-ipv6\-\_\-session\-\_\-}$\ast$ next}}\label{struct__ipv6__session___ac6d0686c91caf00b0b9eaefd9ec5bfcd}
+\hypertarget{struct__ipv6__session___ab10186c154259d2b4ed2d25b7e23ed17}{\index{\-\_\-ipv6\-\_\-session\-\_\-@{\-\_\-ipv6\-\_\-session\-\_\-}!t\-I\-D@{t\-I\-D}}
+\index{t\-I\-D@{t\-I\-D}!_ipv6_session_@{\-\_\-ipv6\-\_\-session\-\_\-}}
+\subsubsection[{t\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-t t\-I\-D}}\label{struct__ipv6__session___ab10186c154259d2b4ed2d25b7e23ed17}
+
+
+connection tables related 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{ipv6defrag_8h}{ipv6defrag.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,171 @@
+\hypertarget{structntoh__tcp__peer__t}{\section{ntoh\-\_\-tcp\-\_\-peer\-\_\-t Struct Reference}
+\label{structntoh__tcp__peer__t}\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+}
+
+
+peer information  
+
+
+
+
+{\ttfamily \#include $<$tcpreassembly.\-h$>$}
+
+
+
+Collaboration diagram for ntoh\-\_\-tcp\-\_\-peer\-\_\-t\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{structntoh__tcp__peer__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_ab36863a07751ac73459d46b677c33b57}{addr}
+\begin{DoxyCompactList}\small\item\em I\-P address. \end{DoxyCompactList}\item 
+unsigned short \hyperlink{structntoh__tcp__peer__t_ab85ff85aa1f60f4a1c1ca1225a9dad06}{port}
+\begin{DoxyCompactList}\small\item\em connection port \end{DoxyCompactList}\item 
+unsigned long \hyperlink{structntoh__tcp__peer__t_a9e6dafb622805bf2612b302c10f18ba5}{isn}
+\begin{DoxyCompactList}\small\item\em initial S\-E\-Q. number \end{DoxyCompactList}\item 
+unsigned long \hyperlink{structntoh__tcp__peer__t_acfab4beb8833b2e45a3d02b1b8eb2ae3}{ian}
+\begin{DoxyCompactList}\small\item\em initial A\-C\-K. number \end{DoxyCompactList}\item 
+unsigned long \hyperlink{structntoh__tcp__peer__t_a8293c38954155f30a30958c8e8100f0b}{next\-\_\-seq}
+\begin{DoxyCompactList}\small\item\em N\-E\-X\-T S\-E\-Q. number. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{structntoh__tcp__peer__t_a9ed11c1f20c424d3a4edf704ecf07d93}{final\-\_\-seq}
+\begin{DoxyCompactList}\small\item\em T\-H\-\_\-\-F\-I\-N $\vert$ T\-H\-\_\-\-R\-S\-T sequence. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_a2e4250265d88bafcbc4bdad73639c2a7}{wsize}
+\begin{DoxyCompactList}\small\item\em T\-C\-P window size. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_aeed08ea57af6f7be240e2bf66162389f}{status}
+\begin{DoxyCompactList}\small\item\em peer status \end{DoxyCompactList}\item 
+\hyperlink{tcpreassembly_8h_a1f60f4065e8694dbf82c9896925295b3}{pntoh\-\_\-tcp\-\_\-segment\-\_\-t} \hyperlink{structntoh__tcp__peer__t_ade44d6ced1b5a51caac1af66150b610c}{segments}
+\begin{DoxyCompactList}\small\item\em segments list \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_a71381dd15a96b081986e0c98e1e75f90}{mss}
+\begin{DoxyCompactList}\small\item\em Max. Segment Size. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_a083c3c3c4c7eb53663cd15317b55872b}{sack}
+\begin{DoxyCompactList}\small\item\em Selective A\-C\-K. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_a648feb18271d5c1fe600c6bf7875478c}{wscale}
+\begin{DoxyCompactList}\small\item\em window scale factor \end{DoxyCompactList}\item 
+unsigned long \hyperlink{structntoh__tcp__peer__t_af40364d83cae85562184a8bee797ae6c}{totalwin}
+\begin{DoxyCompactList}\small\item\em total window size \end{DoxyCompactList}\item 
+unsigned int \hyperlink{structntoh__tcp__peer__t_a2eb3b9494c999b0dd38c4d40bfdc55b4}{lastts}
+\begin{DoxyCompactList}\small\item\em last ts \end{DoxyCompactList}\item 
+unsigned short \hyperlink{structntoh__tcp__peer__t_a51b032f0cfd74b0bdbcf8294f1f7d7b7}{receive}
+\begin{DoxyCompactList}\small\item\em send peer segments to user? \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+peer information 
+
+\subsection{Field Documentation}
+\hypertarget{structntoh__tcp__peer__t_ab36863a07751ac73459d46b677c33b57}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!addr@{addr}}
+\index{addr@{addr}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{addr}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int addr}}\label{structntoh__tcp__peer__t_ab36863a07751ac73459d46b677c33b57}
+
+
+I\-P address. 
+
+\hypertarget{structntoh__tcp__peer__t_a9ed11c1f20c424d3a4edf704ecf07d93}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!final\-\_\-seq@{final\-\_\-seq}}
+\index{final\-\_\-seq@{final\-\_\-seq}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{final\-\_\-seq}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long final\-\_\-seq}}\label{structntoh__tcp__peer__t_a9ed11c1f20c424d3a4edf704ecf07d93}
+
+
+T\-H\-\_\-\-F\-I\-N $\vert$ T\-H\-\_\-\-R\-S\-T sequence. 
+
+\hypertarget{structntoh__tcp__peer__t_acfab4beb8833b2e45a3d02b1b8eb2ae3}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!ian@{ian}}
+\index{ian@{ian}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{ian}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long ian}}\label{structntoh__tcp__peer__t_acfab4beb8833b2e45a3d02b1b8eb2ae3}
+
+
+initial A\-C\-K. number 
+
+\hypertarget{structntoh__tcp__peer__t_a9e6dafb622805bf2612b302c10f18ba5}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!isn@{isn}}
+\index{isn@{isn}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{isn}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long isn}}\label{structntoh__tcp__peer__t_a9e6dafb622805bf2612b302c10f18ba5}
+
+
+initial S\-E\-Q. number 
+
+\hypertarget{structntoh__tcp__peer__t_a2eb3b9494c999b0dd38c4d40bfdc55b4}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!lastts@{lastts}}
+\index{lastts@{lastts}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{lastts}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int lastts}}\label{structntoh__tcp__peer__t_a2eb3b9494c999b0dd38c4d40bfdc55b4}
+
+
+last ts 
+
+\hypertarget{structntoh__tcp__peer__t_a71381dd15a96b081986e0c98e1e75f90}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!mss@{mss}}
+\index{mss@{mss}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{mss}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int mss}}\label{structntoh__tcp__peer__t_a71381dd15a96b081986e0c98e1e75f90}
+
+
+Max. Segment Size. 
+
+\hypertarget{structntoh__tcp__peer__t_a8293c38954155f30a30958c8e8100f0b}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!next\-\_\-seq@{next\-\_\-seq}}
+\index{next\-\_\-seq@{next\-\_\-seq}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{next\-\_\-seq}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long next\-\_\-seq}}\label{structntoh__tcp__peer__t_a8293c38954155f30a30958c8e8100f0b}
+
+
+N\-E\-X\-T S\-E\-Q. number. 
+
+\hypertarget{structntoh__tcp__peer__t_ab85ff85aa1f60f4a1c1ca1225a9dad06}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!port@{port}}
+\index{port@{port}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{port}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short port}}\label{structntoh__tcp__peer__t_ab85ff85aa1f60f4a1c1ca1225a9dad06}
+
+
+connection port 
+
+\hypertarget{structntoh__tcp__peer__t_a51b032f0cfd74b0bdbcf8294f1f7d7b7}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!receive@{receive}}
+\index{receive@{receive}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{receive}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short receive}}\label{structntoh__tcp__peer__t_a51b032f0cfd74b0bdbcf8294f1f7d7b7}
+
+
+send peer segments to user? 
+
+\hypertarget{structntoh__tcp__peer__t_a083c3c3c4c7eb53663cd15317b55872b}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!sack@{sack}}
+\index{sack@{sack}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{sack}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int sack}}\label{structntoh__tcp__peer__t_a083c3c3c4c7eb53663cd15317b55872b}
+
+
+Selective A\-C\-K. 
+
+\hypertarget{structntoh__tcp__peer__t_ade44d6ced1b5a51caac1af66150b610c}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!segments@{segments}}
+\index{segments@{segments}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{segments}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-tcp\-\_\-segment\-\_\-t} segments}}\label{structntoh__tcp__peer__t_ade44d6ced1b5a51caac1af66150b610c}
+
+
+segments list 
+
+\hypertarget{structntoh__tcp__peer__t_aeed08ea57af6f7be240e2bf66162389f}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!status@{status}}
+\index{status@{status}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{status}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int status}}\label{structntoh__tcp__peer__t_aeed08ea57af6f7be240e2bf66162389f}
+
+
+peer status 
+
+\hypertarget{structntoh__tcp__peer__t_af40364d83cae85562184a8bee797ae6c}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!totalwin@{totalwin}}
+\index{totalwin@{totalwin}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{totalwin}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long totalwin}}\label{structntoh__tcp__peer__t_af40364d83cae85562184a8bee797ae6c}
+
+
+total window size 
+
+\hypertarget{structntoh__tcp__peer__t_a648feb18271d5c1fe600c6bf7875478c}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!wscale@{wscale}}
+\index{wscale@{wscale}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{wscale}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int wscale}}\label{structntoh__tcp__peer__t_a648feb18271d5c1fe600c6bf7875478c}
+
+
+window scale factor 
+
+\hypertarget{structntoh__tcp__peer__t_a2e4250265d88bafcbc4bdad73639c2a7}{\index{ntoh\-\_\-tcp\-\_\-peer\-\_\-t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}!wsize@{wsize}}
+\index{wsize@{wsize}!ntoh_tcp_peer_t@{ntoh\-\_\-tcp\-\_\-peer\-\_\-t}}
+\subsubsection[{wsize}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int wsize}}\label{structntoh__tcp__peer__t_a2e4250265d88bafcbc4bdad73639c2a7}
+
+
+T\-C\-P window size. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{tcpreassembly_8h}{tcpreassembly.\-h}\end{DoxyCompactItemize}

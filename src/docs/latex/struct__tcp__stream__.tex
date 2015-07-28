@@ -1,0 +1,155 @@
+\hypertarget{struct__tcp__stream__}{\section{\-\_\-tcp\-\_\-stream\-\_\- Struct Reference}
+\label{struct__tcp__stream__}\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}}
+}
+
+
+connection data  
+
+
+
+
+{\ttfamily \#include $<$tcpreassembly.\-h$>$}
+
+
+
+Collaboration diagram for \-\_\-tcp\-\_\-stream\-\_\-\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{struct__tcp__stream____coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__tcp__stream__}{\-\_\-tcp\-\_\-stream\-\_\-} $\ast$ \hyperlink{struct__tcp__stream___a7c78f69b0b17c301d5efac15fdf52e8f}{next}
+\item 
+\hyperlink{structntoh__tcp__tuple5__t}{ntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} \hyperlink{struct__tcp__stream___ace3ecfe5f3174bb45bbead89efe846de}{tuple}
+\begin{DoxyCompactList}\small\item\em data to generate the key to identify the connection \end{DoxyCompactList}\item 
+\hyperlink{structntoh__tcp__peer__t}{ntoh\-\_\-tcp\-\_\-peer\-\_\-t} \hyperlink{struct__tcp__stream___a1a9f72c5f58a3583f2a54d176e51de0c}{client}
+\begin{DoxyCompactList}\small\item\em client data \end{DoxyCompactList}\item 
+\hyperlink{structntoh__tcp__peer__t}{ntoh\-\_\-tcp\-\_\-peer\-\_\-t} \hyperlink{struct__tcp__stream___a20b10dfca977ef001517383d7b5e7ad2}{server}
+\begin{DoxyCompactList}\small\item\em server data \end{DoxyCompactList}\item 
+\hyperlink{tcpreassembly_8h_aa3f9c3d7e8a394f8b2f6329d8f5a8567}{ntoh\-\_\-tcp\-\_\-key\-\_\-t} \hyperlink{struct__tcp__stream___a3e73dbd870716a9514647123a271c681}{key}
+\begin{DoxyCompactList}\small\item\em connection key \end{DoxyCompactList}\item 
+unsigned int \hyperlink{struct__tcp__stream___aeed08ea57af6f7be240e2bf66162389f}{status}
+\begin{DoxyCompactList}\small\item\em connection status \end{DoxyCompactList}\item 
+unsigned short \hyperlink{struct__tcp__stream___a6007459c2b9e0960b841fe8fd596b001}{closedby}
+\begin{DoxyCompactList}\small\item\em who closed the connection \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{struct__tcp__stream___aea3dcf0c8de30d192ee92494131c4996}{function}
+\begin{DoxyCompactList}\small\item\em user-\/defined function to receive data \end{DoxyCompactList}\item 
+struct timeval \hyperlink{struct__tcp__stream___a9d115049a50ba4e69eb04c23c973a4a2}{last\-\_\-activ}
+\begin{DoxyCompactList}\small\item\em last activity \end{DoxyCompactList}\item 
+unsigned int \hyperlink{struct__tcp__stream___ac9513bdb8bd827b1cb22798ae852ba13}{syn\-\_\-retries}
+\begin{DoxyCompactList}\small\item\em max. allowed S\-Y\-N retries \end{DoxyCompactList}\item 
+unsigned int \hyperlink{struct__tcp__stream___ab971226b37668b378effb81aeba6a63c}{synack\-\_\-retries}
+\begin{DoxyCompactList}\small\item\em max. allowed S\-Y\-N/\-A\-C\-K retries \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{struct__tcp__stream___a697ce711b67313990d351b5c95f87aed}{udata}
+\begin{DoxyCompactList}\small\item\em user-\/defined data linked to this stream \end{DoxyCompactList}\item 
+\hyperlink{structntoh__lock__t}{ntoh\-\_\-lock\-\_\-t} \hyperlink{struct__tcp__stream___aad15823e4f2835531e6a02321cd53f7e}{lock}
+\item 
+unsigned short \hyperlink{struct__tcp__stream___a23b5d0e5ed45fe6d2771469b246eaa42}{enable\-\_\-check\-\_\-timeout}
+\item 
+unsigned short \hyperlink{struct__tcp__stream___a5a1f60051aef79a9ac2d6d89ac996da1}{enable\-\_\-check\-\_\-nowindow}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+connection data 
+
+\subsection{Field Documentation}
+\hypertarget{struct__tcp__stream___a1a9f72c5f58a3583f2a54d176e51de0c}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!client@{client}}
+\index{client@{client}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-tcp\-\_\-peer\-\_\-t} client}}\label{struct__tcp__stream___a1a9f72c5f58a3583f2a54d176e51de0c}
+
+
+client data 
+
+\hypertarget{struct__tcp__stream___a6007459c2b9e0960b841fe8fd596b001}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!closedby@{closedby}}
+\index{closedby@{closedby}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{closedby}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short closedby}}\label{struct__tcp__stream___a6007459c2b9e0960b841fe8fd596b001}
+
+
+who closed the connection 
+
+\hypertarget{struct__tcp__stream___a5a1f60051aef79a9ac2d6d89ac996da1}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!enable\-\_\-check\-\_\-nowindow@{enable\-\_\-check\-\_\-nowindow}}
+\index{enable\-\_\-check\-\_\-nowindow@{enable\-\_\-check\-\_\-nowindow}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{enable\-\_\-check\-\_\-nowindow}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short enable\-\_\-check\-\_\-nowindow}}\label{struct__tcp__stream___a5a1f60051aef79a9ac2d6d89ac996da1}
+\hypertarget{struct__tcp__stream___a23b5d0e5ed45fe6d2771469b246eaa42}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!enable\-\_\-check\-\_\-timeout@{enable\-\_\-check\-\_\-timeout}}
+\index{enable\-\_\-check\-\_\-timeout@{enable\-\_\-check\-\_\-timeout}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{enable\-\_\-check\-\_\-timeout}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short enable\-\_\-check\-\_\-timeout}}\label{struct__tcp__stream___a23b5d0e5ed45fe6d2771469b246eaa42}
+\hypertarget{struct__tcp__stream___aea3dcf0c8de30d192ee92494131c4996}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!function@{function}}
+\index{function@{function}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ function}}\label{struct__tcp__stream___aea3dcf0c8de30d192ee92494131c4996}
+
+
+user-\/defined function to receive data 
+
+\hypertarget{struct__tcp__stream___a3e73dbd870716a9514647123a271c681}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!key@{key}}
+\index{key@{key}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-tcp\-\_\-key\-\_\-t} key}}\label{struct__tcp__stream___a3e73dbd870716a9514647123a271c681}
+
+
+connection key 
+
+\hypertarget{struct__tcp__stream___a9d115049a50ba4e69eb04c23c973a4a2}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!last\-\_\-activ@{last\-\_\-activ}}
+\index{last\-\_\-activ@{last\-\_\-activ}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{last\-\_\-activ}]{\setlength{\rightskip}{0pt plus 5cm}struct timeval last\-\_\-activ}}\label{struct__tcp__stream___a9d115049a50ba4e69eb04c23c973a4a2}
+
+
+last activity 
+
+\hypertarget{struct__tcp__stream___aad15823e4f2835531e6a02321cd53f7e}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!lock@{lock}}
+\index{lock@{lock}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-lock\-\_\-t} lock}}\label{struct__tcp__stream___aad15823e4f2835531e6a02321cd53f7e}
+\hypertarget{struct__tcp__stream___a7c78f69b0b17c301d5efac15fdf52e8f}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!next@{next}}
+\index{next@{next}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-tcp\-\_\-stream\-\_\-}$\ast$ next}}\label{struct__tcp__stream___a7c78f69b0b17c301d5efac15fdf52e8f}
+\hypertarget{struct__tcp__stream___a20b10dfca977ef001517383d7b5e7ad2}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!server@{server}}
+\index{server@{server}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-tcp\-\_\-peer\-\_\-t} server}}\label{struct__tcp__stream___a20b10dfca977ef001517383d7b5e7ad2}
+
+
+server data 
+
+\hypertarget{struct__tcp__stream___aeed08ea57af6f7be240e2bf66162389f}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!status@{status}}
+\index{status@{status}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{status}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int status}}\label{struct__tcp__stream___aeed08ea57af6f7be240e2bf66162389f}
+
+
+connection status 
+
+\hypertarget{struct__tcp__stream___ac9513bdb8bd827b1cb22798ae852ba13}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!syn\-\_\-retries@{syn\-\_\-retries}}
+\index{syn\-\_\-retries@{syn\-\_\-retries}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{syn\-\_\-retries}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int syn\-\_\-retries}}\label{struct__tcp__stream___ac9513bdb8bd827b1cb22798ae852ba13}
+
+
+max. allowed S\-Y\-N retries 
+
+\hypertarget{struct__tcp__stream___ab971226b37668b378effb81aeba6a63c}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!synack\-\_\-retries@{synack\-\_\-retries}}
+\index{synack\-\_\-retries@{synack\-\_\-retries}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{synack\-\_\-retries}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int synack\-\_\-retries}}\label{struct__tcp__stream___ab971226b37668b378effb81aeba6a63c}
+
+
+max. allowed S\-Y\-N/\-A\-C\-K retries 
+
+\hypertarget{struct__tcp__stream___ace3ecfe5f3174bb45bbead89efe846de}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!tuple@{tuple}}
+\index{tuple@{tuple}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{tuple}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-tcp\-\_\-tuple5\-\_\-t} tuple}}\label{struct__tcp__stream___ace3ecfe5f3174bb45bbead89efe846de}
+
+
+data to generate the key to identify the connection 
+
+\hypertarget{struct__tcp__stream___a697ce711b67313990d351b5c95f87aed}{\index{\-\_\-tcp\-\_\-stream\-\_\-@{\-\_\-tcp\-\_\-stream\-\_\-}!udata@{udata}}
+\index{udata@{udata}!_tcp_stream_@{\-\_\-tcp\-\_\-stream\-\_\-}}
+\subsubsection[{udata}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ udata}}\label{struct__tcp__stream___a697ce711b67313990d351b5c95f87aed}
+
+
+user-\/defined data linked to this stream 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{tcpreassembly_8h}{tcpreassembly.\-h}\end{DoxyCompactItemize}

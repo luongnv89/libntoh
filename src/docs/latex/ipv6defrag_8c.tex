@@ -1,0 +1,343 @@
+\hypertarget{ipv6defrag_8c}{\section{ipv6defrag.\-c File Reference}
+\label{ipv6defrag_8c}\index{ipv6defrag.\-c@{ipv6defrag.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$sys/time.\-h$>$}\\*
+{\ttfamily \#include $<$libntoh.\-h$>$}\\*
+Include dependency graph for ipv6defrag.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ipv6defrag_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ipv6defrag_8c_a0e25ec3d9c374c5e6dceeb9341baf766}{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}
+\item 
+\#define \hyperlink{ipv6defrag_8c_a3bd964a20f05ec8f7adea52b9323fbb8}{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T}(offset)~(ntohs(offset)\&$\sim$0x01)
+\item 
+\#define \hyperlink{ipv6defrag_8c_a3239047d7134a2cd2fa06df84f9bf177}{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S}(offset)~ntohs(offset\&I\-P6\-F\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G)
+\item 
+\#define \hyperlink{ipv6defrag_8c_a43b7201050790177c6210907f0cbbdf9}{I\-S\-\_\-\-S\-E\-T}(a, b)~(a \& b)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{ipv6defrag_8c_ad4e3ffd4c74ea4ce8df171708c4a8a66}{ntoh\-\_\-ipv6\-\_\-get\-\_\-size} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session)
+\begin{DoxyCompactList}\small\item\em A\-P\-I to get the size of the flows table (max allowed flows) \end{DoxyCompactList}\item 
+unsigned int \hyperlink{ipv6defrag_8c_a2f57f546b934e37305aff7e968251b5d}{ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4} (struct ip6\-\_\-hdr $\ast$ip, \hyperlink{ipv6defrag_8h_a4db210ee141c7407f453639a3ed3b832}{pntoh\-\_\-ipv6\-\_\-tuple4\-\_\-t} tuple)
+\begin{DoxyCompactList}\small\item\em A\-P\-I to get a tuple4. \end{DoxyCompactList}\item 
+\hyperlink{ipv6defrag_8h_a22d5b5c2361647104c63fcc5d78935fd}{pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} \hyperlink{ipv6defrag_8c_a4d95b843e260136f9974163322c4af78}{ntoh\-\_\-ipv6\-\_\-find\-\_\-flow} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session, \hyperlink{ipv6defrag_8h_a4db210ee141c7407f453639a3ed3b832}{pntoh\-\_\-ipv6\-\_\-tuple4\-\_\-t} tuple4)
+\begin{DoxyCompactList}\small\item\em Finds an I\-P flow. \end{DoxyCompactList}\item 
+\hyperlink{ipv6defrag_8h_a22d5b5c2361647104c63fcc5d78935fd}{pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} \hyperlink{ipv6defrag_8c_a5dff4b25bcf2a68eb347356f57004027}{ntoh\-\_\-ipv6\-\_\-new\-\_\-flow} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session, \hyperlink{ipv6defrag_8h_a4db210ee141c7407f453639a3ed3b832}{pntoh\-\_\-ipv6\-\_\-tuple4\-\_\-t} tuple4, \hyperlink{ipv6defrag_8h_a940f6670b906dd8ea05d56a98586f9f0}{pipv6\-\_\-dfcallback\-\_\-t} function, void $\ast$udata, unsigned int $\ast$error)
+\begin{DoxyCompactList}\small\item\em Adds a new I\-Pv6 flow. \end{DoxyCompactList}\item 
+void \hyperlink{ipv6defrag_8c_a3a70e1eaf88ca00b5aba9d5b540ebb0f}{ntoh\-\_\-ipv6\-\_\-free\-\_\-flow} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session, \hyperlink{ipv6defrag_8h_a22d5b5c2361647104c63fcc5d78935fd}{pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} $\ast$flow, unsigned short reason)
+\begin{DoxyCompactList}\small\item\em Frees an I\-Pv6 flow. \end{DoxyCompactList}\item 
+int \hyperlink{ipv6defrag_8c_a65e489a8ddc251e464e8b5d643fffe39}{ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session, \hyperlink{ipv6defrag_8h_a22d5b5c2361647104c63fcc5d78935fd}{pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} flow, struct ip6\-\_\-hdr $\ast$iphdr, size\-\_\-t len)
+\begin{DoxyCompactList}\small\item\em Adds a new I\-Pv6 fragment to a given flow. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{ipv6defrag_8c_ac441924432a54289e0e8e3d0065af034}{ntoh\-\_\-ipv6\-\_\-count\-\_\-flows} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session)
+\begin{DoxyCompactList}\small\item\em Returns the total count of flows stored in the global hash table. \end{DoxyCompactList}\item 
+\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} \hyperlink{ipv6defrag_8c_a2cddaf8d48fbba5e5702b3fac5f02ece}{ntoh\-\_\-ipv6\-\_\-new\-\_\-session} (unsigned int max\-\_\-flows, unsigned long max\-\_\-mem, unsigned int $\ast$error)
+\begin{DoxyCompactList}\small\item\em Creates a new session with independent parameters to reassemble T\-C\-P segments. \end{DoxyCompactList}\item 
+void \hyperlink{ipv6defrag_8c_a7e5d65bc976117147fc079ac6d18fc76}{ntoh\-\_\-ipv6\-\_\-free\-\_\-session} (\hyperlink{ipv6defrag_8h_a40faea7fd542cf73f764a1981ffd31d0}{pntoh\-\_\-ipv6\-\_\-session\-\_\-t} session)
+\begin{DoxyCompactList}\small\item\em Releases all resources used by an I\-Pv6 session. \end{DoxyCompactList}\item 
+void \hyperlink{ipv6defrag_8c_ab0a121ef041811b426b17ee60bd33ebd}{ntoh\-\_\-ipv6\-\_\-init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the I\-Pv6 defragmentation. \end{DoxyCompactList}\item 
+void \hyperlink{ipv6defrag_8c_a60e8d532c6a1b8fddb69955737fc9daa}{ntoh\-\_\-ipv6\-\_\-exit} (void)
+\begin{DoxyCompactList}\small\item\em Flush all I\-Pv6 sessions and release all resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{ipv6defrag_8c_a0e25ec3d9c374c5e6dceeb9341baf766}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D@{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}}
+\index{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D@{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{\-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-\_\-\-F\-A\-V\-O\-R\-\_\-\-B\-S\-D}}\label{ipv6defrag_8c_a0e25ec3d9c374c5e6dceeb9341baf766}
+\hypertarget{ipv6defrag_8c_a43b7201050790177c6210907f0cbbdf9}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!I\-S\-\_\-\-S\-E\-T@{I\-S\-\_\-\-S\-E\-T}}
+\index{I\-S\-\_\-\-S\-E\-T@{I\-S\-\_\-\-S\-E\-T}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{I\-S\-\_\-\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-S\-\_\-\-S\-E\-T(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~(a \& b)}}\label{ipv6defrag_8c_a43b7201050790177c6210907f0cbbdf9}
+\hypertarget{ipv6defrag_8c_a3bd964a20f05ec8f7adea52b9323fbb8}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T@{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T}}
+\index{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T@{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-\_\-\-O\-F\-F\-S\-E\-T(
+\begin{DoxyParamCaption}
+\item[{}]{offset}
+\end{DoxyParamCaption}
+)~(ntohs(offset)\&$\sim$0x01)}}\label{ipv6defrag_8c_a3bd964a20f05ec8f7adea52b9323fbb8}
+\hypertarget{ipv6defrag_8c_a3239047d7134a2cd2fa06df84f9bf177}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S@{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S}}
+\index{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S@{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-T\-O\-H\-\_\-\-G\-E\-T\-\_\-\-I\-P\-V6\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G\-M\-E\-N\-T\-S(
+\begin{DoxyParamCaption}
+\item[{}]{offset}
+\end{DoxyParamCaption}
+)~ntohs(offset\&I\-P6\-F\-\_\-\-M\-O\-R\-E\-\_\-\-F\-R\-A\-G)}}\label{ipv6defrag_8c_a3239047d7134a2cd2fa06df84f9bf177}
+
+
+\subsection{Function Documentation}
+\hypertarget{ipv6defrag_8c_a65e489a8ddc251e464e8b5d643fffe39}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment@{ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment}}
+\index{ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment@{ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment}]{\setlength{\rightskip}{0pt plus 5cm}int ntoh\-\_\-ipv6\-\_\-add\-\_\-fragment (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-flow\-\_\-t}}]{flow, }
+\item[{struct ip6\-\_\-hdr $\ast$}]{iphdr, }
+\item[{size\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a65e489a8ddc251e464e8b5d643fffe39}
+
+
+Adds a new I\-Pv6 fragment to a given flow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flow} & Flow where the new fragment will be added \\
+\hline
+{\em iphdr} & I\-Pv6 Header of the fragment \\
+\hline
+{\em len} & Length of the fragment (I\-Pv6 header + payload) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\-T\-O\-H\-\_\-\-O\-K on success, or error code when it fails 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]\-: only checks the first header, should we verify them all? \end{DoxyRefDesc}
+\hypertarget{ipv6defrag_8c_ac441924432a54289e0e8e3d0065af034}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-count\-\_\-flows@{ntoh\-\_\-ipv6\-\_\-count\-\_\-flows}}
+\index{ntoh\-\_\-ipv6\-\_\-count\-\_\-flows@{ntoh\-\_\-ipv6\-\_\-count\-\_\-flows}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-count\-\_\-flows}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ntoh\-\_\-ipv6\-\_\-count\-\_\-flows (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_ac441924432a54289e0e8e3d0065af034}
+
+
+Returns the total count of flows stored in the global hash table. 
+
+\begin{DoxyReturn}{Returns}
+Total count of stored flows 
+\end{DoxyReturn}
+\hypertarget{ipv6defrag_8c_a60e8d532c6a1b8fddb69955737fc9daa}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-exit@{ntoh\-\_\-ipv6\-\_\-exit}}
+\index{ntoh\-\_\-ipv6\-\_\-exit@{ntoh\-\_\-ipv6\-\_\-exit}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-exit}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-ipv6\-\_\-exit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a60e8d532c6a1b8fddb69955737fc9daa}
+
+
+Flush all I\-Pv6 sessions and release all resources. 
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{ipv6defrag_8c_a60e8d532c6a1b8fddb69955737fc9daa_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ipv6defrag_8c_a4d95b843e260136f9974163322c4af78}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-find\-\_\-flow@{ntoh\-\_\-ipv6\-\_\-find\-\_\-flow}}
+\index{ntoh\-\_\-ipv6\-\_\-find\-\_\-flow@{ntoh\-\_\-ipv6\-\_\-find\-\_\-flow}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-find\-\_\-flow}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} ntoh\-\_\-ipv6\-\_\-find\-\_\-flow (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-tuple4\-\_\-t}}]{tuple4}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a4d95b843e260136f9974163322c4af78}
+
+
+Finds an I\-P flow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tuple4} & Flow information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the flow on success or 0 when fails 
+\end{DoxyReturn}
+\hypertarget{ipv6defrag_8c_a3a70e1eaf88ca00b5aba9d5b540ebb0f}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-free\-\_\-flow@{ntoh\-\_\-ipv6\-\_\-free\-\_\-flow}}
+\index{ntoh\-\_\-ipv6\-\_\-free\-\_\-flow@{ntoh\-\_\-ipv6\-\_\-free\-\_\-flow}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-free\-\_\-flow}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-ipv6\-\_\-free\-\_\-flow (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} $\ast$}]{flow, }
+\item[{unsigned short}]{reason}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a3a70e1eaf88ca00b5aba9d5b540ebb0f}
+
+
+Frees an I\-Pv6 flow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flow} & I\-Pv6 flow to be freed \\
+\hline
+{\em reason} & Why has been freed the flow? \\
+\hline
+\end{DoxyParams}
+\hypertarget{ipv6defrag_8c_a7e5d65bc976117147fc079ac6d18fc76}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-free\-\_\-session@{ntoh\-\_\-ipv6\-\_\-free\-\_\-session}}
+\index{ntoh\-\_\-ipv6\-\_\-free\-\_\-session@{ntoh\-\_\-ipv6\-\_\-free\-\_\-session}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-free\-\_\-session}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-ipv6\-\_\-free\-\_\-session (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a7e5d65bc976117147fc079ac6d18fc76}
+
+
+Releases all resources used by an I\-Pv6 session. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & Session to be released \\
+\hline
+\end{DoxyParams}
+\hypertarget{ipv6defrag_8c_ad4e3ffd4c74ea4ce8df171708c4a8a66}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-get\-\_\-size@{ntoh\-\_\-ipv6\-\_\-get\-\_\-size}}
+\index{ntoh\-\_\-ipv6\-\_\-get\-\_\-size@{ntoh\-\_\-ipv6\-\_\-get\-\_\-size}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-get\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ntoh\-\_\-ipv6\-\_\-get\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_ad4e3ffd4c74ea4ce8df171708c4a8a66}
+
+
+A\-P\-I to get the size of the flows table (max allowed flows) 
+
+Gets the size of the flows table (max allowed flows) \hypertarget{ipv6defrag_8c_a2f57f546b934e37305aff7e968251b5d}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4@{ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4}}
+\index{ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4@{ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int ntoh\-\_\-ipv6\-\_\-get\-\_\-tuple4 (
+\begin{DoxyParamCaption}
+\item[{struct ip6\-\_\-hdr $\ast$}]{ip, }
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-tuple4\-\_\-t}}]{tuple}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a2f57f546b934e37305aff7e968251b5d}
+
+
+A\-P\-I to get a tuple4. 
+
+Gets the tuple4 of a I\-Pv6 flow. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]\-: only checks the first header, should we verify them all? \end{DoxyRefDesc}
+\hypertarget{ipv6defrag_8c_ab0a121ef041811b426b17ee60bd33ebd}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-init@{ntoh\-\_\-ipv6\-\_\-init}}
+\index{ntoh\-\_\-ipv6\-\_\-init@{ntoh\-\_\-ipv6\-\_\-init}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void ntoh\-\_\-ipv6\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_ab0a121ef041811b426b17ee60bd33ebd}
+
+
+Initializes the I\-Pv6 defragmentation. 
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{ipv6defrag_8c_ab0a121ef041811b426b17ee60bd33ebd_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{ipv6defrag_8c_ab0a121ef041811b426b17ee60bd33ebd_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{ipv6defrag_8c_a5dff4b25bcf2a68eb347356f57004027}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-new\-\_\-flow@{ntoh\-\_\-ipv6\-\_\-new\-\_\-flow}}
+\index{ntoh\-\_\-ipv6\-\_\-new\-\_\-flow@{ntoh\-\_\-ipv6\-\_\-new\-\_\-flow}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-new\-\_\-flow}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-ipv6\-\_\-flow\-\_\-t} ntoh\-\_\-ipv6\-\_\-new\-\_\-flow (
+\begin{DoxyParamCaption}
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t}}]{session, }
+\item[{{\bf pntoh\-\_\-ipv6\-\_\-tuple4\-\_\-t}}]{tuple4, }
+\item[{{\bf pipv6\-\_\-dfcallback\-\_\-t}}]{function, }
+\item[{void $\ast$}]{udata, }
+\item[{unsigned int $\ast$}]{error}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a5dff4b25bcf2a68eb347356f57004027}
+
+
+Adds a new I\-Pv6 flow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tuple4} & Flow information \\
+\hline
+{\em function} & User defined function to receive defragmented datagrams \\
+\hline
+{\em count\-\_\-max} & Max. fragments allowed \\
+\hline
+{\em udata} & User defined data associated with this flow \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new created flow 
+\end{DoxyReturn}
+\hypertarget{ipv6defrag_8c_a2cddaf8d48fbba5e5702b3fac5f02ece}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!ntoh\-\_\-ipv6\-\_\-new\-\_\-session@{ntoh\-\_\-ipv6\-\_\-new\-\_\-session}}
+\index{ntoh\-\_\-ipv6\-\_\-new\-\_\-session@{ntoh\-\_\-ipv6\-\_\-new\-\_\-session}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{ntoh\-\_\-ipv6\-\_\-new\-\_\-session}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t} ntoh\-\_\-ipv6\-\_\-new\-\_\-session (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max\-\_\-flows, }
+\item[{unsigned long}]{max\-\_\-mem, }
+\item[{unsigned int $\ast$}]{error}
+\end{DoxyParamCaption}
+)}}\label{ipv6defrag_8c_a2cddaf8d48fbba5e5702b3fac5f02ece}
+
+
+Creates a new session with independent parameters to reassemble T\-C\-P segments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-\_\-flows} & Max number of allowed flows in this session \\
+\hline
+{\em max\-\_\-mem} & Max. amount of memory used by the session \\
+\hline
+{\em error} & Returned error code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the new session or 0 when it fails 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ipv6defrag_8c_a2cddaf8d48fbba5e5702b3fac5f02ece_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{ipv6defrag_8c_a07228fb710b36433a50ad7e7a9a30cc9}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!init@{init}}
+\index{init@{init}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short init}}\label{ipv6defrag_8c_a07228fb710b36433a50ad7e7a9a30cc9}
+\hypertarget{ipv6defrag_8c_aad15823e4f2835531e6a02321cd53f7e}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!lock@{lock}}
+\index{lock@{lock}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ntoh\-\_\-lock\-\_\-t} lock}}\label{ipv6defrag_8c_aad15823e4f2835531e6a02321cd53f7e}
+\hypertarget{ipv6defrag_8c_afdf28b72da2ddac6a2f63a11e7c83d12}{\index{ipv6defrag.\-c@{ipv6defrag.\-c}!sessions\-\_\-list@{sessions\-\_\-list}}
+\index{sessions\-\_\-list@{sessions\-\_\-list}!ipv6defrag.c@{ipv6defrag.\-c}}
+\subsubsection[{sessions\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pntoh\-\_\-ipv6\-\_\-session\-\_\-t} sessions\-\_\-list}}\label{ipv6defrag_8c_afdf28b72da2ddac6a2f63a11e7c83d12}
