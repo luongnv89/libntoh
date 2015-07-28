@@ -17,7 +17,7 @@ SET ( LIBNTOH_SRCS libntoh.c tcpreassembly.c ipv4defrag.c ipv6defrag.c common.c 
 SET ( CMAKE_C_FLAGS "-Wall -Os -O3 -pipe -fPIC" )
 #SET ( CMAKE_SWIG_FLAGS "")
 # // static: comment the line above and uncomment the line bellow to compile as dynamic library (contrib by Di3)
-SET ( CMAKE_C_FLAGS "-g -Wall -Os -O3 -pipe" )
+SET ( CMAKE_C_FLAGS "-g -Wall -Os -O3 -pipe -fPIC" )
 # set output name
 SET ( OUTPUT_LIB ntoh )
 # set interface files
