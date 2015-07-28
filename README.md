@@ -1,4 +1,4 @@
-This is a fock from project: [https://github.com/sch3m4/libntoh](https://github.com/sch3m4/libntoh) with some modifications and updates.
+This is a fork from project: [https://github.com/sch3m4/libntoh](https://github.com/sch3m4/libntoh) with some modifications and updates.
 
 # Modifications and Updates:
 
@@ -156,3 +156,5 @@ $ sudo ./example -i eth0 -F "tcp and host 10.0.0.1 and port 22"
 [+] Capture finished!
 $
 ```
+
+More information in [wiki page](https://github.com/luongnv89/libntoh/wiki)
