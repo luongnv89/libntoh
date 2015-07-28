@@ -1,109 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
 <html>
 <head>
-  <meta charset='utf-8'>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>sch3m4/libntoh @ GitHub</title>
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #2a6027; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #2a6027; }
-    h3 { text-align: center; color: #2a6027; }
-    a { color: #2a6027; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+  <title>libntoh</title>
+  <meta name="description" content="a user-friendly library to provide a easy way to perform defragmentation and reassembly of network/transport/  protocols">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
 </head>
 
 <body>
-  <a href="https://github.com/sch3m4/libntoh"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+  <div class="wrapper">
+    <header>
+      <h1 class="title">libntoh</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">a user-friendly library to provide a easy way to perform defragmentation and reassembly of network/transport/  protocols</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/luongnv89/libntoh/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/luongnv89/libntoh/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/luongnv89/libntoh" class="code">View libntoh on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p>This is a fork from project: <a href="https://github.com/sch3m4/libntoh">https://github.com/sch3m4/libntoh</a> with some modifications and updates.</p>
 
-    <div class="download">
-      <a href="https://github.com/sch3m4/libntoh/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/sch3m4/libntoh/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+<h1>
+<a id="modifications-and-updates" class="anchor" href="#modifications-and-updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modifications and Updates:</h1>
+
+<ul>
+<li>Fix issues <a href="https://github.com/sch3m4/libntoh/issues/11">Never finding stream</a>
+</li>
+<li>Default building libntoh as a <strong>static library</strong> - not <strong>dynamic library</strong>
+</li>
+<li>Simplify compilation and installisation.</li>
+<li>Add more examples and comments</li>
+<li>Not using <strong>pkg-config</strong> any more</li>
+<li>Add <strong>libpcap-dev, python-dev</strong> to list of dependency</li>
+<li>Fix dependency package name. <strong>libpthread-dev</strong> should be <strong>libpth-dev</strong>
+</li>
+</ul>
+
+<h1>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p><strong>Q: What is libntoh?</strong></p>
+
+<p>A: Libntoh aims to be a user-friendly library to provide a easy way to perform defragmentation and reassembly of network/transport/(more?) protocols.</p>
+
+<p><strong>Q: Why libntoh?</strong></p>
+
+<p>A: It's true there are some libraries which aims to do the same things (like libnids), but libntoh is intended to provide a flexible, thread-safe and highly configurable environment for the final user. And most of all, libntoh is released under Modified BSD License to avoid many license issues.</p>
+
+<p><strong>Q: Which protocols does libntoh support?</strong></p>
+
+<p>A: Currently libntoh performs IPv4 defragmentation and TCP reassembly</p>
+
+<h1>
+<a id="mailing-list" class="anchor" href="#mailing-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mailing List</h1>
+
+<p>There is a mailing list for libntoh development issues: <a href="mailto:libntoh-dev@safetybits.net">libntoh-dev@safetybits.net</a></p>
+
+<h1>
+<a id="getting-the-source" class="anchor" href="#getting-the-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting the source</h1>
+
+<div class="highlight highlight-sh"><pre>$ git clone https://github.com/luongnv89/libntoh.git</pre></div>
+
+<h1>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h1>
+
+<p>To successfully compile libntoh you only need gcc, make, cmake, python-dev and libpth-dev.</p>
+
+<p>Debian-like OS:</p>
+
+<div class="highlight highlight-sh"><pre>$ sudo apt-get install -y cmake gcc make build-essential python-dev swig libpth-dev libpcap</pre></div>
+
+<p>If you want to generate the source code documentation, you will also need doxygen:</p>
+
+<div class="highlight highlight-sh"><pre>$ sudo apt-get install doxygen</pre></div>
+
+<p>You need CMake to compile libntoh and ntohexample.</p>
+
+<h1>
+<a id="compilation-instructions" class="anchor" href="#compilation-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation instructions</h1>
+
+<div class="highlight highlight-sh"><pre>$ <span class="pl-c1">cd</span> libntoh/src
+../src$ mkdir build
+../src$ <span class="pl-c1">cd</span> build
+../src/build$ cmake ..</pre></div>
+
+<p>On the other hand you can change the installation prefix by defining CMAKE_INSTALL_PREFIX:</p>
+
+<div class="highlight highlight-sh"><pre>$ cmake ../ -DCMAKE_INSTALL_PREFIX=/usr</pre></div>
+
+<p>So the new installation prefix will be "/usr"</p>
+
+<p>For more information, refer to the wiki page.</p>
+
+<h1>
+<a id="python-wrapper" class="anchor" href="#python-wrapper" aria-hidden="true"><span class="octicon octicon-link"></span></a>Python Wrapper</h1>
+
+<p>Once you have installed libntoh, you can use the python wrapper to comunicate with the library as follows:</p>
+
+<div class="highlight highlight-sh"><pre><span class="pl-k">~</span>$ python
+Python 2.7.3 (default, Mar 14 2014, 11:57:14) 
+[GCC 4.7.2] on linux2
+Type <span class="pl-s"><span class="pl-pds">"</span>help<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>copyright<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>credits<span class="pl-pds">"</span></span> or <span class="pl-s"><span class="pl-pds">"</span>license<span class="pl-pds">"</span></span> <span class="pl-k">for</span> <span class="pl-smi">more</span> information.
+<span class="pl-k">&gt;&gt;&gt;</span> from libntoh import ntoh_version
+<span class="pl-k">&gt;&gt;&gt;</span> print <span class="pl-en">ntoh_version</span>()
+0.4a
+<span class="pl-k">&gt;&gt;&gt;</span> <span class="pl-en">quit</span>()
+<span class="pl-k">~</span>$</pre></div>
+
+<p>A more complete example will be added soon.</p>
+
+<h1>
+<a id="ntohexample-compilation-instructions---this-is-different-with-sch3m4libntoh" class="anchor" href="#ntohexample-compilation-instructions---this-is-different-with-sch3m4libntoh" aria-hidden="true"><span class="octicon octicon-link"></span></a>"ntohexample" Compilation instructions - <em>This is different with sch3m4/libntoh</em>
+</h1>
+
+<div class="highlight highlight-sh"><pre>../libntoh$ <span class="pl-c1">cd</span> example
+../libntoh/example$ gcc -o example example.c -lntoh -lpthread -lpcap</pre></div>
+
+<h1>
+<a id="ntohexample-output" class="anchor" href="#ntohexample-output" aria-hidden="true"><span class="octicon octicon-link"></span></a>"ntohexample" Output:</h1>
+
+<div class="highlight highlight-sh"><pre>$ sudo ./example
+
+<span class="pl-c">###########################</span>
+<span class="pl-c">#     libntoh Example     #</span>
+<span class="pl-c"># ----------------------- #</span>
+<span class="pl-c"># Written by Chema Garcia #</span>
+<span class="pl-c"># Modified and updated by Luong Nguyen #</span>
+<span class="pl-c"># ----------------------- #</span>
+<span class="pl-c">#  http://safetybits.net  #</span>
+<span class="pl-c">#   chema@safetybits.net  #</span>
+<span class="pl-c">#   sch3m4@brutalsec.net  #</span>
+<span class="pl-c">#   luongnv89@gmail.com   # </span>
+<span class="pl-c">###########################</span>
+
+[i] libntoh version: 0.4a
+
+[+] Usage: ./example <span class="pl-k">&lt;</span>options<span class="pl-k">&gt;</span>
+
++ Options:
+    -i <span class="pl-k">|</span> --iface <span class="pl-k">&lt;</span>val<span class="pl-k">&gt;</span> -----<span class="pl-k">&gt;</span> Interface to <span class="pl-c1">read</span> packets from
+    -f <span class="pl-k">|</span> --file <span class="pl-k">&lt;</span>val<span class="pl-k">&gt;</span> ------<span class="pl-k">&gt;</span> File path to <span class="pl-c1">read</span> packets from
+    -F <span class="pl-k">|</span> --filter <span class="pl-k">&lt;</span>val<span class="pl-k">&gt;</span> ----<span class="pl-k">&gt;</span> Capture filter (must contain <span class="pl-s"><span class="pl-pds">"</span>tcp<span class="pl-pds">"</span></span> or <span class="pl-s"><span class="pl-pds">"</span>ip<span class="pl-pds">"</span></span>)
+    -c <span class="pl-k">|</span> --client ----------<span class="pl-k">&gt;</span> Receive client data only
+    -s <span class="pl-k">|</span> --server ----------<span class="pl-k">&gt;</span> Receive server data only</pre></div>
+
+<p>Capture live streaming</p>
+
+<div class="highlight highlight-sh"><pre>$ sudo ./example -i eth0 -F <span class="pl-s"><span class="pl-pds">"</span>tcp and host 10.0.0.1 and port 22<span class="pl-pds">"</span></span>
+
+<span class="pl-c">###########################</span>
+<span class="pl-c">#     libntoh Example     #</span>
+<span class="pl-c"># ----------------------- #</span>
+<span class="pl-c"># Written by Chema Garcia #</span>
+<span class="pl-c"># Modified and updated by Luong Nguyen #</span>
+<span class="pl-c"># ----------------------- #</span>
+<span class="pl-c">#  http://safetybits.net  #</span>
+<span class="pl-c">#   chema@safetybits.net  #</span>
+<span class="pl-c">#   sch3m4@brutalsec.net  #</span>
+<span class="pl-c">#   luongnv89@gmail.com   # </span>
+<span class="pl-c">###########################</span>
+
+[i] libntoh version: 0.4a
+
+[i] Source: eth0 / Ethernet
+[i] Filter: tcp and host 10.0.0.1 and port 22
+[i] Receive data from client: Yes
+[i] Receive data from server: Yes
+[i] Max. TCP streams allowed: 1024
+[i] Max. IPv4 flows allowed: 1024
+
+.... 
+
+[+] Capture finished<span class="pl-k">!</span>
+$</pre></div>
+
+<p>More information in <a href="https://github.com/luongnv89/libntoh/wiki">wiki page</a></p>
+        </article>
+      </div>
     </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/luongnv89" class="avatar"><img src="https://avatars1.githubusercontent.com/u/3288457?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/luongnv89">luongnv89</a> maintains <a href="https://github.com/luongnv89/libntoh">libntoh</a></p>
 
-    <h1><a href="https://github.com/sch3m4/libntoh">libntoh</a>
-      <span class="small">by <a href="https://github.com/sch3m4">sch3m4</a></span></h1>
 
-    <div class="description">
-      C Library to perform reassembly and defragmentation of network/transport protocols
-    </div>
-
-    
-      <p>Libntoh aims to be an user-friendly library to provide a easy way to perform defragmentation and reassembly of network/transport/(more?) protocols.
-
-It's true there are some libraries which aims to do the same things (like libnids), but libntoh is intended to provide a flexible, thread-safe and highly configurable environment for the final user. And most of all, libntoh is released under Modified BSD License to avoid many license issues.
-
-Currently libntoh performs IP defragmentation and TCP reassembly</p>
-    
-
-    
-      <h2>Dependencies</h2>
-      <p>libpthread</p>
-    
-
-    
-      <h2>Install</h2>
-      <p>$ cd libntoh.src/libntoh<br>
-$ mkdir build<br>
-$ cd build<br>
-$ cmake ..<br>
-$ make<br>
-$ sudo make install</p>
-    
-
-    
-      <h2>License</h2>
-      <p>Modified BSD License</p>
-    
-
-    
-      <h2>Authors</h2>
-      <p>Chema García</p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>sch3m4 (sch3m4@opensec.es)
-<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/sch3m4/libntoh/zipball/master">zip</a> or
-      <a href="https://github.com/sch3m4/libntoh/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/sch3m4/libntoh</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/sch3m4/libntoh">sch3m4/libntoh</a>
-    </div>
-
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/luongnv89/libntoh/tarball/master" class="tar">tar</a><a href="https://github.com/luongnv89/libntoh/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
   </div>
 
+  
 </body>
 </html>
