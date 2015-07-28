@@ -405,13 +405,10 @@ void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tc
 
 	switch ( reason )
 	{
-		case NTOH_REASON_SYNC:
 	        switch ( extra )
 	        {
 	            case NTOH_REASON_MAX_SYN_RETRIES_REACHED:
 	            case NTOH_REASON_MAX_SYNACK_RETRIES_REACHED:
-	            printf("finished something!\n");
-	            break;
 	            case NTOH_REASON_HSFAILED:
 	            case NTOH_REASON_EXIT:
 	            case NTOH_REASON_TIMEDOUT:
@@ -423,8 +420,6 @@ void tcp_callback ( pntoh_tcp_stream_t stream , pntoh_tcp_peer_t orig , pntoh_tc
 
 	                break;
 	        }
-
-	        break;
 
 		/* Data segment */
 		case NTOH_REASON_DATA:

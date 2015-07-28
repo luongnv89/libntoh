@@ -55,7 +55,7 @@
 #include <arpa/inet.h>
 
 #include <pcap.h>
-#include <libntoh.h>
+#include <libntoh/libntoh.h>
 
 typedef struct pkthdr {
   struct timeval ts;   /**< time stamp that indicates the packet arrival time */
