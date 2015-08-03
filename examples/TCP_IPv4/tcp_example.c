@@ -55,7 +55,7 @@
 #include <arpa/inet.h>
 
 #include <pcap.h>
-#include <libntoh/libntoh.h>
+#include <libntoh.h>
 
 typedef struct pkthdr {
   struct timeval ts;   /**< time stamp that indicates the packet arrival time */
@@ -605,6 +605,7 @@ int main ( int argc , char *argv[] )
 		if ( (ip->ip_hl * 4 ) < sizeof(struct ip) )
 			continue;
 		if ( ip->ip_p == IPPROTO_TCP ){
+			printf("IPPROTO_TCP: %d",IPPROTO_IP);
 			send_tcp_segment ( ip , &tcp_callback );
 		}
 		// Get the number of stored streams in a session
