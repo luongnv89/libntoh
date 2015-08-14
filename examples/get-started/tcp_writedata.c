@@ -38,6 +38,7 @@ void writeData(struct ip* iphdr){
 	size_t size_payload;
 	size_t size_total=0;
 	
+	log_info("packet_id: %u\n",ntohs(iphdr->ip_id));
 	unsigned char* payload;
 	char path[1024] = {0};
 	char *filePath;	
