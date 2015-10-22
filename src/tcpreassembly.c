@@ -1056,8 +1056,16 @@ inline static void handle_closing_connection ( pntoh_tcp_session_t session , pnt
 	if ( segment->flags & (TH_FIN | TH_RST) )
 		origin->next_seq++;
 
-	if ( stream->status != NTOH_STATUS_CLOSED && origin->receive )
-		((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_SYNC , 0 );
+	if ( stream->status != NTOH_STATUS_CLOSED && origin->receive ){
+		if(segment->payload_len == 0){
+			((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_SYNC , 0 );
+			origin->next_seq = segment->ack;
+		}else{
+			((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_DATA , NTOH_REASON_XXX );
+			origin->next_seq = segment->seq + segment->payload_len;
+		}
+		
+	}
 
     free ( segment );
 
