@@ -829,6 +829,7 @@ inline static unsigned int send_peer_segments ( pntoh_tcp_session_t session , pn
 			extra = NTOH_REASON_OOO;
 			goto tosend;
 		}else { // @contrib: di3online - https://github.com/di3online
+			fprintf(stderr, "NTOH_REASON_XXX\n");
 			extra = NTOH_REASON_XXX;
 			// break; // before treatment is not followed by processing problems in testing POST uploaded file (incomplete)
 			          // Add a new option to continue treatment now, but this option is how to deal with the follow-up
@@ -974,17 +975,27 @@ inline static void handle_closing_connection ( pntoh_tcp_session_t session , pnt
 			 * Sender: Transits to FIN WAIT 1
 			 * Receiver: Does not transits, sends ACK and transits to CLOSE WAIT
 			 * */
-			if ( segment->flags & TH_FIN )
-				break;
+			if ( segment->flags & TH_FIN ){
+				origin->status = NTOH_STATUS_FINWAIT1;
+				destination->status = NTOH_STATUS_CLOSEWAIT;
+				stream->status = NTOH_STATUS_CLOSING;
 
-			origin->status = NTOH_STATUS_FINWAIT1;
-			destination->status = NTOH_STATUS_CLOSEWAIT;
-			stream->status = NTOH_STATUS_CLOSING;
+				if ( origin == &stream->client )
+					stream->closedby = NTOH_CLOSEDBY_CLIENT;
+				else if ( origin == &stream->server )
+					stream->closedby = NTOH_CLOSEDBY_SERVER;
+				
+				// break;
+			}
 
-			if ( origin == &stream->client )
-				stream->closedby = NTOH_CLOSEDBY_CLIENT;
-			else if ( origin == &stream->server )
-				stream->closedby = NTOH_CLOSEDBY_SERVER;
+			// origin->status = NTOH_STATUS_FINWAIT1;
+			// destination->status = NTOH_STATUS_CLOSEWAIT;
+			// stream->status = NTOH_STATUS_CLOSING;
+
+			// if ( origin == &stream->client )
+			// 	stream->closedby = NTOH_CLOSEDBY_CLIENT;
+			// else if ( origin == &stream->server )
+			// 	stream->closedby = NTOH_CLOSEDBY_SERVER;
 
 			break;
 
@@ -1002,26 +1013,39 @@ inline static void handle_closing_connection ( pntoh_tcp_session_t session , pnt
 			 * Sender: Transits to LASTACK
 			 * Receiver: Sends ACK and transits to CLOSING
 			 */
-			if ( segment->flags & TH_ACK )
-			{
-				// peer receives ACK
-				if ( peer == destination )
-				{
-					peer->status = NTOH_STATUS_FINWAIT2;
+			if(peer == destination){
+				peer->status = NTOH_STATUS_FINWAIT2;
+				if(segment->flags & TH_ACK){
 					side->status = NTOH_STATUS_CLOSEWAIT;
-				// peer sends ACK (due to a previously received FIN while being in FIN WAIT 1)
-				}else
-					peer->status = NTOH_STATUS_CLOSING;
-
-			}else if ( peer == destination && ( segment->flags & TH_FIN ) )
-			{
-				peer->status = NTOH_STATUS_CLOSING;
-				side->status = NTOH_STATUS_LASTACK;
+				}
+				if(segment->flags & TH_FIN){
+					side->status = NTOH_STATUS_LASTACK;	
+				}
 			}
+			// if ( segment->flags & TH_ACK )
+			// {
+			// 	// peer receives ACK
+			// 	if ( peer == destination )
+			// 	{
+					
+			// 		side->status = NTOH_STATUS_CLOSEWAIT;
+			// 	// peer sends ACK (due to a previously received FIN while being in FIN WAIT 1)
+			// 	}
+			// 	// else
+			// 	// 	peer->status = NTOH_STATUS_TIMEWAIT;
+
+			// }else if ( segment->flags & TH_FIN )
+			// {
+			// 	if(peer == destination){
+			// 		peer->status = NTOH_STATUS_TIMEWAIT;
+			// 		side->status = NTOH_STATUS_LASTACK;	
+			// 	}
+				
+			// }
 
 			break;
 
-		case NTOH_STATUS_CLOSING:
+		case NTOH_STATUS_CLOSEWAIT:
 			break;
 
 		case NTOH_STATUS_FINWAIT2:
@@ -1033,6 +1057,7 @@ inline static void handle_closing_connection ( pntoh_tcp_session_t session , pnt
 			if ( peer == destination && ( segment->flags & TH_FIN ) )
 			{
 				peer->status = NTOH_STATUS_TIMEWAIT;
+				side->status = NTOH_STATUS_LASTACK;	
 			}else if ( peer == origin )
 			{
 				if ( segment->flags & TH_ACK )
@@ -1057,14 +1082,20 @@ inline static void handle_closing_connection ( pntoh_tcp_session_t session , pnt
 		origin->next_seq++;
 
 	if ( stream->status != NTOH_STATUS_CLOSED && origin->receive ){
-		if(segment->payload_len == 0){
-			((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_SYNC , 0 );
-			origin->next_seq = segment->ack;
-		}else{
-			((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_DATA , NTOH_REASON_XXX );
-			origin->next_seq = segment->seq + segment->payload_len;
-		}
 		
+		((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , segment->payload_len > 0 ? NTOH_REASON_DATA : NTOH_REASON_SYNC , 0 );
+
+		// send_single_segment ( session , stream , origin , destination , segment , segment->payload_len > 0 ? NTOH_REASON_DATA : NTOH_REASON_SYNC, NTOH_REASON_XXX );
+
+		// if(segment->payload_len == 0){
+		// 	((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_SYNC , 0 );
+		// 	origin->next_seq = segment->ack;
+		// }else{
+		// 	fprintf(stderr, "Another NTOH_REASON_XXX\n");
+		// 	((pntoh_tcp_callback_t)stream->function) ( stream , origin , destination , segment , NTOH_REASON_DATA , NTOH_REASON_XXX );
+		// 	origin->next_seq = segment->seq + segment->payload_len;
+		// }
+
 	}
 
     free ( segment );
