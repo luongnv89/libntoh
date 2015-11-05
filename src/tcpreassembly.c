@@ -829,7 +829,7 @@ inline static unsigned int send_peer_segments ( pntoh_tcp_session_t session , pn
 			extra = NTOH_REASON_OOO;
 			goto tosend;
 		}else { // @contrib: di3online - https://github.com/di3online
-			fprintf(stderr, "NTOH_REASON_XXX\n");
+			// fprintf(stderr, "NTOH_REASON_XXX\n");
 			extra = NTOH_REASON_XXX;
 			// break; // before treatment is not followed by processing problems in testing POST uploaded file (incomplete)
 			          // Add a new option to continue treatment now, but this option is how to deal with the follow-up
