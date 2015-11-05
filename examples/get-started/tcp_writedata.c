@@ -227,7 +227,7 @@ int main(int argc,char *argv[]){
 		if(( size_ip = iphdr->ip_hl *4 )<sizeof(struct ip))
 			/* Only process ip packet */
 			continue;
-		
+		log_info("packet_id(before): %u\n",ntohs(iphdr->ip_id));
 		/* Check TCP header */
 		if(iphdr->ip_p!=IPPROTO_TCP)
 			continue;
